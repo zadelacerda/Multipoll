@@ -1,7 +1,12 @@
 package edu.wwu.csci412.multipoll;
 
-import androidx.fragment.app.Fragment;
+import android.os.Bundle;
+import android.view.View;
 
-public class ListFragment extends Fragment {
+import androidx.fragment.app.FragmentActivity;
 
+public class ListFragment extends FragmentActivity {
+    public void onViewCreated(View view, Bundle savedInstaceState) {
+
+    }
 }
