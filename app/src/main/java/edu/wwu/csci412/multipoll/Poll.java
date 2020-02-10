@@ -1,20 +1,32 @@
 package edu.wwu.csci412.multipoll;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+public class Poll {
+    private String name;
+    private ArrayList<String> options;
+    private boolean state;
 
-public class Poll extends Fragment {
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_poll, container, false);
+    public Poll(String n) {
+        name = n;
+        options = new ArrayList<>();
+    }
 
-        return view;
+    public String getName() {
+        return name;
+    }
+    public List<String> getOptions() {
+        return options;
+    }
+    public void addOption(String o) {
+        options.add(o);
+    }
+    public void removeOption(String o) {
+        for (int i=0; i<options.size(); i++) {
+            if (options.get(i).equals(o)) {
+                options.remove(i);
+            }
+        }
     }
 }
