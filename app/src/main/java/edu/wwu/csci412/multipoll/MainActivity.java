@@ -1,6 +1,7 @@
 package edu.wwu.csci412.multipoll;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,11 +18,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         controller = new Controller();
 
         Button createPoll = this.findViewById(R.id.createPollMain);
         Button Groups = this.findViewById(R.id.Groups);
+//        Button SignUp = this.findViewById(R.id.)
 
         createPoll.setOnClickListener(new View.OnClickListener() {
             @Override

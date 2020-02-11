@@ -1,5 +1,6 @@
 package edu.wwu.csci412.multipoll;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import Data.Controller;
@@ -19,10 +22,13 @@ public class PollDisplay extends Fragment {
     private static User user;
     private static Group currentGroup;
     //private static Poll currentPoll;
-
+    private Toolbar toolbar;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_poll_display, container, false);
+        //toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        //toolbar.setBackgroundColor(Color.parseColor("#ff0000"));
+
         controller = MainActivity.getController();
         user = controller.getUser();
         currentGroup = user.getCurrentGroup();

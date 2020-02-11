@@ -7,10 +7,12 @@ public class Poll {
     private String name;
     private ArrayList<String> options;
     private boolean state;
+    private User owner;
 
-    public Poll(String n) {
+    public Poll(User u, String n) {
         name = n;
         options = new ArrayList<>();
+        owner = u;
     }
 
     public String getName() {

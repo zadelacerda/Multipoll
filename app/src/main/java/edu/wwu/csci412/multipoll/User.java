@@ -87,7 +87,6 @@ public class User {
     public ArrayList<String> getUserCategories() {
         return userCategories;
     }
-    // Remove user group as well
 /*--------------------------------------------*/
     public void addGroup(Group g) {
         userGroups.add(g);
@@ -101,5 +100,22 @@ public class User {
     public void addUserCategory(String cat) {
         userCategories.add(cat);
     }
-    // Remove user category as well
+    public void removeGroup(Group g) {
+        boolean found = false;
+        int i = -1;
+        while (!found) {
+            if (g.getName().equals(userGroups.get(i).getName())) {
+                userGroups.remove(i);
+            }
+        }
+    }
+    public void removeUserCategory(String cat) {
+        boolean found = false;
+        int i = -1;
+        while (!found) {
+            if (cat.equals(userCategories.get(i))) {
+                userCategories.remove(i);
+            }
+        }
+    }
 }
