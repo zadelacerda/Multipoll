@@ -18,20 +18,20 @@ import java.lang.reflect.Array;
 import Data.Controller;
 
 public class ChooseCategory  extends AppCompatActivity {
-    private ArrayAdapter<String> arrayAdapter;
+
     public static Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choosecategory);
-
         controller = MainActivity.getController();
 
-        RelativeLayout layout = findViewById(R.id.catContainer);
+        ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.categories);
+
 //        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, controller.getCategoryNames());
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, controller.getUser().getUserCategories());
         lv.setAdapter(arrayAdapter);
 
     }
