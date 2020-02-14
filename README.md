@@ -1,10 +1,10 @@
 How to push to git:
 
-Step 1. Update remote repository
+Step  1. Update remote repository
 
 
-2. Create pull request
+      2. Create pull request
 
-3. Resolve merge conflicts
+      3. Resolve merge conflicts
 
-4. Push to master
+      4. Push to master
