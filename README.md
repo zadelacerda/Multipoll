@@ -1,7 +1,8 @@
 How to push to git:
 
-Step  1. Update remote repository
+Steps:  
 
+      1. Update remote repository
 
       2. Create pull request
 
