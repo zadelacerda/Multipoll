@@ -1,4 +1,4 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import Data.UserInfo;
+
+import edu.wwu.csci412.multipoll.Model.UserInfo;
+import edu.wwu.csci412.multipoll.R;
 
 
 public class Signup extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class Signup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.account_signup);
         mAuth = FirebaseAuth.getInstance();
         //dbReference = FirebaseDatabase.getReference("users");
     }

@@ -1,5 +1,5 @@
 
-package Data;
+package edu.wwu.csci412.multipoll.Model;
 import java.util.List;
 public class UserInfo {
 
