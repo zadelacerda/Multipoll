@@ -1,15 +1,14 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import Data.Controller;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.R;
 
 public class MainActivity extends AppCompatActivity {
     public static Controller controller;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         createPoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (MainActivity.this, ChooseCategory.class);
+                Intent intent = new Intent (MainActivity.this, ChooseGroup.class);
                 startActivity(intent);
             }
         });
