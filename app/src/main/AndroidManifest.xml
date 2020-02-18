@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Signin"></activity>
-        <activity android:name=".Signup" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".Controller.MainActivity">
+        </activity>
+<!--        <activity android:name=".Chat"></activity>-->
+        <activity android:name=".Controller.ChooseCategory"></activity>
+        <activity android:name=".Controller.Groups"></activity>
+        <activity android:name=".Controller.GroupSelected"></activity>
+        <activity android:name=".Controller.Signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".Chat"></activity> -->
-        <activity android:name=".ChooseCategory" />
-        <activity android:name=".Groups" />
+        </activity>
+        <activity android:name=".Controller.Signup"></activity>
     </application>
 
 </manifest>
