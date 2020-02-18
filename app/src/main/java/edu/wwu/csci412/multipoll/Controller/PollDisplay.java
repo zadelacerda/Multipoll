@@ -1,6 +1,5 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,12 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import Data.Controller;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.R;
 
 public class PollDisplay extends Fragment {
     public static Controller controller;

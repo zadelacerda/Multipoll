@@ -1,7 +1,9 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.wwu.csci412.multipoll.Controller.User;
 
 public class Group {
     private static String name;

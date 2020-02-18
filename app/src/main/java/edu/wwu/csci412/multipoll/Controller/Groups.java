@@ -1,4 +1,4 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
-import Data.Controller;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.R;
 
 public class Groups extends AppCompatActivity {
     public static Controller controller;
@@ -19,7 +19,7 @@ public class Groups extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groups);
+        setContentView(R.layout.groups);
         controller = MainActivity.getController();
         user = controller.getUser();
 

@@ -1,7 +1,10 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.Model.Poll;
 
 public class User {
     private static String firstName;

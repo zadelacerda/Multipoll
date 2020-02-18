@@ -1,10 +1,9 @@
-package edu.wwu.csci412.multipoll;
+package edu.wwu.csci412.multipoll.Controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import Data.Controller;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.R;
 
 public class PollResults extends Fragment {
     public static Controller controller;
@@ -30,8 +31,8 @@ public class PollResults extends Fragment {
         ArrayAdapter<String> arrayAdapter;
         ListView lv = view.findViewById(R.id.pollOptions);
 
-        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, user.getCurrentPoll().getOptions());
-        lv.setAdapter(arrayAdapter);
+//        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, user.getCurrentPoll().getOptions());
+//        lv.setAdapter(arrayAdapter);
 
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
