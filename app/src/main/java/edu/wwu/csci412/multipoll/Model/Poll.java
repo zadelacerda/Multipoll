@@ -8,68 +8,69 @@ import edu.wwu.csci412.multipoll.Controller.User;
 
 public class Poll {
 
-    private static String name; // name of poll
-    private static User owner; // owner of poll
-    private static boolean status; // status of poll (active - true/ inactive - false)
-    private static Category category; // type of category
-    private static ArrayList<Elements> elements; // list of elements to vote on
-    private static Group target; // target group for this poll
+    private String name; // name of poll
+    private User owner; // owner of poll
+    private boolean status; // status of poll (active - true/ inactive - false)
+    private Category category; // type of category
+    private ArrayList<Elements> elements; // list of elements to vote on
+    private Group target; // target group for this poll
 
-    public Poll(User user, String name) {
-        this.name = name;
+    public Poll(User u, String n) {
+        name = n;
         status = true;
-        owner = user;
+        owner = u;
+        elements = new ArrayList<>();
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        Poll.name = name;
+    public void setName(String n) {
+        name = n;
     }
 
-    public static User getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public static void setOwner(User owner) {
-        Poll.owner = owner;
+    public void setOwner(User o) {
+        owner = o;
     }
 
-    public static boolean isStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public static void setStatus(boolean status) {
-        Poll.status = status;
+    public void setStatus(boolean s) {
+        status = s;
     }
 
-    public static Category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public static void setCategory(Category category) {
-        Poll.category = category;
+    public void setCategory(Category c) {
+        category = c;
     }
 
-    public static ArrayList<Elements> getElements() {
+    public ArrayList<Elements> getElements() {
         return elements;
     }
 
-    public static void setElements(ArrayList<Elements> elements) {
-        Poll.elements = elements;
+    public void setElements(ArrayList<Elements> e) {
+        elements = e;
     }
 
-    public static void addElement(Elements element){
+    public void addElement(Elements element){
         elements.add(element);
     }
 
-    public static Group getTarget() {
+    public Group getTarget() {
         return target;
     }
 
-    public static void setTarget(Group target) {
-        Poll.target = target;
+    public void setTarget(Group t) {
+        target = t;
     }
 }

@@ -6,17 +6,17 @@ public class Controller {
 
     private static User user = new User();
 
-    private static Group roommates = new Group("Roommates");
-    private static String fun = "Fun";
-    private static String food = "Food";
+    private Group roommates = new Group("Roommates");
+    private String fun = "Fun";
+    private String food = "Food";
 
-    private static Poll birthday = new Poll(user, "Ben's Birthday");
-    private static Poll meeting = new Poll(user, "Meeting");
-    private static Poll dinner = new Poll(user, "Family Dinner");
+    private Poll birthday = new Poll(user, "Ben's Birthday");
+    private Poll meeting = new Poll(user, "Meeting");
+    private Poll dinner = new Poll(user, "Family Dinner");
 
-    private static Elements option1 = new Elements("Laser Tag", "");
-    private static Elements option2 = new Elements("Movie Night", "");
-    private static Elements option3 = new Elements("Arcade", "");
+    private Elements option1 = new Elements("Laser Tag", "");
+    private Elements option2 = new Elements("Movie Night", "");
+    private Elements option3 = new Elements("Arcade", "");
 
 
     public Controller() {

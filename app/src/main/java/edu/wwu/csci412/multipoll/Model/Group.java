@@ -6,9 +6,9 @@ import java.util.List;
 import edu.wwu.csci412.multipoll.Controller.User;
 
 public class Group {
-    private static String name;
-    private static ArrayList<User> members;
-    private static ArrayList<Poll> polls;
+    private String name;
+    private ArrayList<User> members;
+    private ArrayList<Poll> polls;
 
     public Group(String n) {
         name = n;
