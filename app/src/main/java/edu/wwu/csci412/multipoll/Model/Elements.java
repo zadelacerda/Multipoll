@@ -5,6 +5,7 @@ package edu.wwu.csci412.multipoll.Model;
 public class Elements {
 
     private static String name; //name of element
+    private static Category category; //name of category that element belongs to
     private static String description; //description of element
     private static int voteCounter; //vote counter for element
 
@@ -36,5 +37,13 @@ public class Elements {
 
     public static void setVoteCounter(int voteCounter) {
         Elements.voteCounter = voteCounter;
+    }
+
+    public static Category getCategory() {
+        return category;
+    }
+
+    public static void setCategory(Category category) {
+        Elements.category = category;
     }
 }

@@ -5,6 +5,7 @@ import edu.wwu.csci412.multipoll.Controller.User;
 public class Controller {
 
     private static User user = new User();
+    private static Category category = new Category("Restaurant");
 
     private static Group roommates = new Group("Roommates");
     private static String fun = "Fun";
@@ -17,6 +18,10 @@ public class Controller {
     private static Elements option1 = new Elements("Laser Tag", "");
     private static Elements option2 = new Elements("Movie Night", "");
     private static Elements option3 = new Elements("Arcade", "");
+
+    private static Elements r1 = new Elements("Mambo Italiano", "");
+    private static Elements r2 = new Elements("D'Annas", "");
+    private static Elements r3 = new Elements("La Fiamma", "");
 
 
     public Controller() {
@@ -31,6 +36,13 @@ public class Controller {
         user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option1);
         user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option2);
         user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option3);
+
+        r1.setCategory(category);
+        r2.setCategory(category);
+        r3.setCategory(category);
+        category.add(r1);
+        category.add(r2);
+        category.add(r3);
 
     }
     public User getUser() {
