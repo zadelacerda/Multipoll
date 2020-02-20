@@ -5,12 +5,13 @@ package edu.wwu.csci412.multipoll.Model;
 public class Elements {
 
     private String name; //name of element
+    private Category category; //name of category that element belongs to
     private String description; //description of element
     private int voteCounter; //vote counter for element
 
-    public Elements(String n, String d){
-        name = n;
-        description = d;
+    public Elements(String name, String description){
+        this.name = name;
+        this.description = description;
         voteCounter = 0;
     }
 
@@ -18,23 +19,31 @@ public class Elements {
         return name;
     }
 
-    public void setName(String n) {
-        name = n;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String d) {
-        description = d;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getVoteCounter() {
-        return voteCounter;
+        return this.voteCounter;
     }
 
-    public void setVoteCounter(int v) {
-        voteCounter = v;
+    public void setVoteCounter(int voteCounter) {
+        this.voteCounter = voteCounter;
+    }
+
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
