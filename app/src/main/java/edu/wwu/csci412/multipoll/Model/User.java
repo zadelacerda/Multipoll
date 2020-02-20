@@ -122,4 +122,14 @@ public class User {
             }
         }
     }
+
+    public List<String> listCategories(ArrayList<Category> categories) {
+        List<String> catNames = new ArrayList<>();
+        for (int i=0; i<categories.size(); i++) {
+            catNames.add(categories.get(i).getName());
+        }
+        return catNames;
+    }
+
+
 }

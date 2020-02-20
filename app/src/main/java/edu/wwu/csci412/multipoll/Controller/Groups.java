@@ -39,6 +39,5 @@ public class Groups extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

@@ -1,6 +1,7 @@
 package edu.wwu.csci412.multipoll.Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /* Poll class */
 
@@ -52,6 +53,14 @@ public class Poll {
         category = c;
     }
 
+    public List<String> listElements(ArrayList<Element> elements) {
+        List<String> elementNames = new ArrayList<>();
+        for (int i=0; i<elements.size(); i++) {
+            elementNames.add(elements.get(i).getName());
+        }
+        return elementNames;
+    }
+
     public ArrayList<Element> getElements() {
         return elements;
     }
@@ -71,4 +80,5 @@ public class Poll {
     public void setTarget(String t) {
         target = t;
     }
+
 }
