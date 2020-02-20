@@ -2,16 +2,16 @@ package edu.wwu.csci412.multipoll.Model;
 
 /* Class for poll elements within each poll category */
 
-public class Elements {
+public class Element {
 
     private String name; //name of element
     private String description; //description of element
     private int voteCounter; //vote counter for element
 
-    public Elements(String n, String d){
-        name = n;
-        description = d;
-        voteCounter = 0;
+    public Element(String n, String d){
+         name = n;
+         description = d;
+         voteCounter = 0;
     }
 
     public String getName() {
@@ -27,14 +27,15 @@ public class Elements {
     }
 
     public void setDescription(String d) {
-        description = d;
+         description = d;
     }
 
     public int getVoteCounter() {
-        return voteCounter;
+        return  voteCounter;
     }
 
-    public void setVoteCounter(int v) {
-        voteCounter = v;
+    public void setVoteCounter(int vc) {
+         voteCounter = vc;
     }
+
 }

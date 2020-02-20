@@ -20,6 +20,8 @@ public class ChooseGroup extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
 
+
+
         Button toCategory = this.findViewById(R.id.group_selected_button);
 
         toCategory.setOnClickListener(new View.OnClickListener() {
