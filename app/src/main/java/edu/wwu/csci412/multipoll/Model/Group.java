@@ -3,11 +3,10 @@ package edu.wwu.csci412.multipoll.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.wwu.csci412.multipoll.Controller.User;
-
 public class Group {
     private String name;
-    private ArrayList<User> members;
+    private String groupID;
+    private ArrayList<String> members;
     private ArrayList<Poll> polls;
 
     public Group(String n) {
@@ -20,7 +19,7 @@ public class Group {
     public String getName() {
         return name;
     }
-    public ArrayList<User> getMembers() {
+    public ArrayList<String> getMembers() {
         return members;
     }
     public ArrayList<Poll> getPolls() {
@@ -46,7 +45,7 @@ public class Group {
         return polls.get(i);
     }
 /*--------------------------------------------*/
-    public void addMember(User u) {
+    public void addMember(String u) {
         members.add(u);
     }
     public void addPoll(Poll p) {

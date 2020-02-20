@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.wwu.csci412.multipoll.Model.Category;
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.R;
 
@@ -20,7 +21,7 @@ public class ChooseCategory  extends AppCompatActivity {
         setContentView(R.layout.choose_category);
         controller = MainActivity.getController();
 
-        ArrayAdapter<String> arrayAdapter;
+        ArrayAdapter<Category> arrayAdapter;
         ListView lv = findViewById(R.id.categories);
 
 //        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);

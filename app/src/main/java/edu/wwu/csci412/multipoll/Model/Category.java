@@ -2,47 +2,44 @@ package edu.wwu.csci412.multipoll.Model;
 
 /* Category class to save previous elements for each category */
 
-import android.sax.Element;
-
 import java.util.ArrayList;
-
-import edu.wwu.csci412.multipoll.Controller.User;
 
 public class Category {
 
-    private static String name; // name of category
-    private static User user; // saved per user not per group/poll
-    private static ArrayList<Elements> elementsList; // list of elements per category
+    private String name; // name of category
+    private String username; // saved per user not per group/poll
+    private ArrayList<Element> elementList; // list of elements per category
 
-    public Category(String name) {
-        this.name = name;
+    public Category(String n) {
+        name = n;
+        elementList = new ArrayList<>();
     }
 
-    public static String getName() {
+    public  String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        Category.name = name;
+    public  void setName(String n) {
+        name = n;
     }
 
-    public static User getUser() {
-        return user;
+    public String getUser() {
+        return username;
     }
 
-    public static void setUser(User user) {
-        Category.user = user;
+    public  void setUser(String u) {
+        username = u;
     }
 
-    public static ArrayList<Elements> getElements() {
-        return elementsList;
+    public ArrayList<Element> getElements() {
+        return elementList;
     }
 
-    public static void add(Elements element){
-        elementsList.add(element);
+    public void add(Element e){
+        elementList.add(e);
     }
 
-    public static void setElements(ArrayList<Elements> elements) {
-        Category.elementsList = elements;
+    public void setElements(ArrayList<Element> e) {
+        elementList = e;
     }
 }
