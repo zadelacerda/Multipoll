@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
 public class PollDisplay extends Fragment {
