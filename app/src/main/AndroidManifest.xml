@@ -27,6 +27,7 @@
         <activity android:name=".Controller.Friends"></activity>
         <activity android:name=".Controller.FriendSelected"></activity>
         <activity android:name=".Controller.PollResults"></activity>
+
     </application>
 
 </manifest>

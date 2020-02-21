@@ -1,5 +1,6 @@
 package edu.wwu.csci412.multipoll.Controller;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -89,5 +90,7 @@ public class Friends extends AppCompatActivity {
         super.onResume();
         searchFriends.clearFocus();
         addFriend.clearFocus();
+
+
     }
 }

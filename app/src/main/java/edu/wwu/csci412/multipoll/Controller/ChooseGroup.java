@@ -17,6 +17,7 @@ public class ChooseGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_group);
 
+
         Button toCategory = this.findViewById(R.id.group_selected_button);
 
         toCategory.setOnClickListener(new View.OnClickListener() {

@@ -15,7 +15,7 @@ public class GroupSelected extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.groups_selected);
         controller = MainActivity.getController();
-
+      
         // Display polls of selected groups in the fragment
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.displayPolls, new PollDisplay()).commit();

@@ -1,5 +1,6 @@
 package edu.wwu.csci412.multipoll.Controller;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.Poll;
+
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
@@ -25,7 +27,6 @@ public class PollDisplay extends Fragment {
     private static User user;
     private static Group currentGroup;
     private static Poll currentPoll;
-
     private Toolbar toolbar;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +42,23 @@ public class PollDisplay extends Fragment {
         ArrayAdapter<String> arrayAdapter;
         ListView lv = view.findViewById(R.id.groupPolls);
 
+
         // Populate view with polls from the current group
         arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, currentGroup.listPolls());
         lv.setAdapter(arrayAdapter);
 
         // Select chosen poll
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String TempListViewClickedValue = currentGroup.listPolls().get(position);
                 user.setCurrentPoll(currentGroup.getPoll(TempListViewClickedValue));
+
                 Intent intent = new Intent(getActivity(), PollResults.class);
                 user.setCurrentPoll(currentGroup.getPoll(TempListViewClickedValue));
                 startActivity(intent);
+
             }
         });
         return view;

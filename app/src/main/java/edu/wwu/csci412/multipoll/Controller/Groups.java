@@ -2,15 +2,15 @@ package edu.wwu.csci412.multipoll.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.User;
@@ -39,6 +39,7 @@ public class Groups extends AppCompatActivity {
         ListView lv = findViewById(R.id.groups);
 
         // Populate view with groups
+
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.listGroups(user.getGroups()));
         lv.setAdapter(arrayAdapter);
 

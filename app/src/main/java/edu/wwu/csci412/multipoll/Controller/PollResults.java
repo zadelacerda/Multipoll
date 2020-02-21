@@ -17,7 +17,9 @@ import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
+
 public class PollResults extends AppCompatActivity {
+
     public static Controller controller;
     private static User user;
     private static Group currentGroup;
@@ -61,4 +63,5 @@ public class PollResults extends AppCompatActivity {
     @Override public boolean onSupportNavigateUp() {
         onBackPressed();
         return true; }
+
 }
