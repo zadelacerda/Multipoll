@@ -20,10 +20,6 @@
         <activity android:name=".Controller.GroupSelected"></activity>
         <activity android:name=".Controller.NewGroup"></activity>
         <activity android:name=".Controller.NewFriend" />
-        <activity android:name=".Controller.MainActivity" /> <!-- <activity android:name=".Chat"></activity> -->
-        <activity android:name=".Controller.ChooseCategory" />
-        <activity android:name=".Controller.Groups" />
-        <activity android:name=".Controller.GroupSelected" />
         <activity android:name=".Controller.Signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
