@@ -79,7 +79,7 @@ public class ChooseElements extends AppCompatActivity {
             }
         });
     }
-
+  
     // Back functionality
     @Override public boolean onSupportNavigateUp() {
         onBackPressed();

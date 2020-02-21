@@ -31,6 +31,7 @@ public class ChooseGroup extends AppCompatActivity {
         // Toolbar setup
         getSupportActionBar().setTitle("Groups");
 
+
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.groups);
 
