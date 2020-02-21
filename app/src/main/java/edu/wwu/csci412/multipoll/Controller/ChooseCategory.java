@@ -38,7 +38,7 @@ public class ChooseCategory  extends AppCompatActivity {
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { 
                 String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
                 Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
                 user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
