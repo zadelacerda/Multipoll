@@ -19,6 +19,11 @@ public class Group {
     public String getName() {
         return name;
     }
+
+    public String getGroupID() {
+        return groupID;
+    }
+
     public ArrayList<String> getMembers() {
         return members;
     }
@@ -50,5 +55,9 @@ public class Group {
     }
     public void addPoll(Poll p) {
         polls.add(p);
+    }
+
+    public void setGroupID(String groupID) {
+        this.groupID = groupID;
     }
 }

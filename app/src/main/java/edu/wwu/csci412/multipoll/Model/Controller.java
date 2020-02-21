@@ -1,9 +1,12 @@
 package edu.wwu.csci412.multipoll.Model;
 
+import edu.wwu.csci412.multipoll.Controller.DatabaseController;
+
 public class Controller {
 
     private static User user = new User();
     private static Category category = new Category("Restaurant");
+
 
     private Group roommates = new Group("Roommates");
     private Category fun =  new Category("Fun");

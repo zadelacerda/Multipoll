@@ -13,19 +13,25 @@ public class User {
     private static String userName;
     private static String password;
     private static String userID;
-    private static ArrayList<Category> userCategories;
-    private static ArrayList<Group> userGroups;
+    private static List<String> friends;
+    private static List<Category> userCategories;
+    private static List<Group> userGroups;
     private static Group currentGroup;
     private static Poll currentPoll;
 
     public User() {
+
         setFirstName("");
         setLastName("");
         setPhoneNumber("");
         setUserName("");
         setPassword("");
-        userCategories = new ArrayList<>();
-        userGroups = new ArrayList<>();
+        setUserID("");
+        userCategories = new ArrayList<Category>();
+        userGroups = new ArrayList<Group>();
+        friends = new ArrayList<String>();
+        currentGroup = null;
+        currentPoll = null;
     }
 /*--------------------------------------------*/
 /*--------------------------------------------*/
@@ -60,15 +66,20 @@ public class User {
     public void setPassword(String p) {
         password = p;
     }
-/*--------------------------------------------*/
-    public List<String> listGroups(ArrayList<Group> groups) {
+
+    public static void setUserID(String userID) {
+        User.userID = userID;
+    }
+
+    /*--------------------------------------------*/
+    public List<String> listGroups(List<Group> groups) {
         List<String> groupNames = new ArrayList<>();
         for (int i=0; i<groups.size(); i++) {
             groupNames.add(groups.get(i).getName());
         }
         return groupNames;
     }
-    public ArrayList<Group> getGroups() {
+    public List<Group> getGroups() {
         return userGroups;
     }
     public Group getGroup(String g) {
@@ -88,7 +99,7 @@ public class User {
     public Poll getCurrentPoll() {
         return currentPoll;
     }
-    public ArrayList<Category> getUserCategories() {
+    public List<Category> getUserCategories() {
         return userCategories;
     }
 /*--------------------------------------------*/
