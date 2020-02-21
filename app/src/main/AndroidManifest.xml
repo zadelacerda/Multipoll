@@ -13,7 +13,9 @@
         <activity android:name=".Controller.MainActivity">
         </activity>
 <!--        <activity android:name=".Chat"></activity>-->
+        <activity android:name=".Controller.ChooseGroup"></activity>
         <activity android:name=".Controller.ChooseCategory"></activity>
+        <activity android:name=".Controller.ChooseElements"></activity>
         <activity android:name=".Controller.Groups"></activity>
         <activity android:name=".Controller.GroupSelected"></activity>
         <activity android:name=".Controller.Signin">

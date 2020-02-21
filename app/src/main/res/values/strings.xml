@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MultiPoll</string>
+    <string name="new_event">New Event</string>
 </resources>
