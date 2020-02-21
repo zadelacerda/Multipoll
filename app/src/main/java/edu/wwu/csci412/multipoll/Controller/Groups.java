@@ -52,7 +52,6 @@ public class Groups extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
