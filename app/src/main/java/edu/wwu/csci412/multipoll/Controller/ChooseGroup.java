@@ -16,10 +16,6 @@ public class ChooseGroup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_group);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-
 
 
         Button toCategory = this.findViewById(R.id.group_selected_button);

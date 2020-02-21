@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import edu.wwu.csci412.multipoll.Model.Controller;
@@ -16,21 +17,30 @@ import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
-public class PollResults extends Fragment {
+
+public class PollResults extends AppCompatActivity {
+
     public static Controller controller;
     private static User user;
     private static Group currentGroup;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_poll_results, container, false);
+        setContentView(R.layout.poll_results);
+
         controller = MainActivity.getController();
         user = controller.getUser();
         currentGroup = user.getCurrentGroup();
 
+        getSupportActionBar().setTitle(user.getCurrentPoll().getName());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
         // Connect GroupSelected activity to this fragment somehow
         ArrayAdapter<String> arrayAdapter;
-        ListView lv = view.findViewById(R.id.pollOptions);
+        ListView lv = findViewById(R.id.pollOptions);
 
 //        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, user.getCurrentPoll().getOptions());
 //        lv.setAdapter(arrayAdapter);
@@ -48,6 +58,10 @@ public class PollResults extends Fragment {
 //
 //            }
 //        });
-        return view;
     }
+
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true; }
+
 }
