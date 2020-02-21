@@ -1,8 +1,11 @@
 package edu.wwu.csci412.multipoll.Model;
 
+import edu.wwu.csci412.multipoll.Controller.DatabaseController;
+
 public class Controller {
 
     private static User user = new User();
+
 
     private Group roommates = new Group("Roommates");
     private Group coworkers = new Group("Co-workers");

@@ -1,4 +1,4 @@
-package edu.wwu.csci412.multipoll.Model;
+package edu.wwu.csci412.multipoll.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,26 +12,19 @@ public class User {
     private static String phoneNumber;
     private static String userName;
     private static String password;
-    private static String userID;
-    private static List<String> friends;
-    private static List<Category> userCategories;
-    private static List<Group> userGroups;
+    private static ArrayList<String> userCategories;
+    private static ArrayList<Group> userGroups;
     private static Group currentGroup;
     private static Poll currentPoll;
 
     public User() {
-
         setFirstName("");
         setLastName("");
         setPhoneNumber("");
         setUserName("");
         setPassword("");
-        setUserID("");
-        userCategories = new ArrayList<Category>();
-        userGroups = new ArrayList<Group>();
-        friends = new ArrayList<String>();
-        currentGroup = null;
-        currentPoll = null;
+        userCategories = new ArrayList<>();
+        userGroups = new ArrayList<>();
     }
 /*--------------------------------------------*/
 /*--------------------------------------------*/
@@ -66,20 +59,15 @@ public class User {
     public void setPassword(String p) {
         password = p;
     }
-
-    public static void setUserID(String userID) {
-        User.userID = userID;
-    }
-
-    /*--------------------------------------------*/
-    public List<String> listGroups(List<Group> groups) {
+/*--------------------------------------------*/
+    public List<String> listGroups(ArrayList<Group> groups) {
         List<String> groupNames = new ArrayList<>();
         for (int i=0; i<groups.size(); i++) {
             groupNames.add(groups.get(i).getName());
         }
         return groupNames;
     }
-    public List<Group> getGroups() {
+    public ArrayList<Group> getGroups() {
         return userGroups;
     }
     public Group getGroup(String g) {
@@ -99,7 +87,7 @@ public class User {
     public Poll getCurrentPoll() {
         return currentPoll;
     }
-    public List<Category> getUserCategories() {
+    public ArrayList<String> getUserCategories() {
         return userCategories;
     }
 /*--------------------------------------------*/
@@ -112,7 +100,7 @@ public class User {
     public void setCurrentPoll(Poll p) {
         currentPoll = p;
     }
-    public void addUserCategory(Category cat) {
+    public void addUserCategory(String cat) {
         userCategories.add(cat);
     }
     public void removeGroup(Group g) {
@@ -133,14 +121,4 @@ public class User {
             }
         }
     }
-
-    public List<String> listCategories(ArrayList<Category> categories) {
-        List<String> catNames = new ArrayList<>();
-        for (int i=0; i<categories.size(); i++) {
-            catNames.add(categories.get(i).getName());
-        }
-        return catNames;
-    }
-
-
 }
