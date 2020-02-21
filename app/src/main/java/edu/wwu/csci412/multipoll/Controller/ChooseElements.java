@@ -31,6 +31,11 @@ public class ChooseElements extends AppCompatActivity {
         controller = MainActivity.getController();
         user = controller.getUser();
 
+        // Toolbar setup
+        getSupportActionBar().setTitle(user.getCurrentCategory().getName());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         /* set up search view */
         SearchView searchView = findViewById(R.id.search_elements);
         searchView.setQueryHint("Search " + user.getCurrentPoll().getCategory());
@@ -73,5 +78,11 @@ public class ChooseElements extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // Back functionality
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

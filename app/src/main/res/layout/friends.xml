@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:focusable="true"
-    android:focusableInTouchMode="true" >
+    android:focusableInTouchMode="true"
+    android:background="@drawable/gradient" >
 
-    <EditText
+    <SearchView
         android:id="@+id/searchFriends"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -45,15 +46,15 @@
             android:id="@+id/addFriend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".8"
+            android:layout_weight=".85"
             android:hint="Add a friend by username!" />
 
-        <ImageView
+        <Button
             android:id="@+id/addBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".2"
-            android:src="@android:drawable/ic_menu_add" />
+            android:layout_weight=".15"
+            android:background="@android:drawable/ic_menu_add" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

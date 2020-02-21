@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,8 +24,9 @@ public class Friends extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
-    EditText searchFriends;
+    SearchView searchFriends;
     EditText addFriend;
+    Button addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class Friends extends AppCompatActivity {
         addFriend = findViewById(R.id.addFriend);
         searchFriends.setFocusableInTouchMode(true);
         addFriend.setFocusableInTouchMode(true);
+        addBtn = findViewById(R.id.addBtn);
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.friends);
 
@@ -60,29 +65,32 @@ public class Friends extends AppCompatActivity {
             }
         });
 
-    }
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int foundUser = 0;
+                String addFriendOutput = "";
+                switch(foundUser) {
+                    case 1:
+                        addFriendOutput = "Success! Added new friend.";
+                        break;
+                    case 0:
+                        addFriendOutput = "Could not find username";
+                        break;
+                }
 
-    // Create menu
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.friends_menu, menu);
-        return true;
-    }
+                Toast.makeText( Friends.this, addFriendOutput, Toast.LENGTH_SHORT).show( );
+            }
+        });
 
-    // Icon options
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch ( id ) {
-            case R.id.friends:
-                return true;
-            default:
-                return super.onOptionsItemSelected( item );
-        }
+
     }
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {
         onBackPressed();
-        return true; }
+        return true;
+    }
 
     // So the editText don't auto focus
     @Override
@@ -90,7 +98,5 @@ public class Friends extends AppCompatActivity {
         super.onResume();
         searchFriends.clearFocus();
         addFriend.clearFocus();
-
-
     }
 }
