@@ -10,8 +10,6 @@ import com.google.firebase.database.DatabaseError;
 import android.util.Log;
 import com.google.firebase.database.Query;
 
-
-
 public class DatabaseController {
     private DatabaseReference mFirebaseRef;
     private FirebaseDatabase mFirebaseDatabase;

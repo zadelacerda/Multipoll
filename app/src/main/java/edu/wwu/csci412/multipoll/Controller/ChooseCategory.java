@@ -28,6 +28,12 @@ public class ChooseCategory  extends AppCompatActivity {
         setContentView(R.layout.choose_category);
         controller = MainActivity.getController();
         user = controller.getUser();
+      
+        // Toolbar setup
+        getSupportActionBar().setTitle("Choose Category " + "(" + user.getCurrentGroup().getName() + ")");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.categories);
@@ -39,12 +45,21 @@ public class ChooseCategory  extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
+
                 Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
-                user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
+                user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
+
                 startActivity(intent);
             }
         });
 
+    }
+
+
+    // Back functionality
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

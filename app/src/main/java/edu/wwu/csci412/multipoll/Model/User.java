@@ -18,6 +18,7 @@ public class User {
     private static List<Group> userGroups;
     private static Group currentGroup;
     private static Poll currentPoll;
+    private static Category currentCategory;
 
     public User() {
 
@@ -102,6 +103,20 @@ public class User {
     public List<Category> getUserCategories() {
         return userCategories;
     }
+    public Category getCurrentCategory() {
+        return currentCategory;
+    }
+    public Category getCategory(String c) {
+        boolean found = false;
+        int i = -1;
+        while (!found) {
+            i++;
+            if (userCategories.get(i).getName().equals(c)) {
+                found = true;
+            }
+        }
+        return userCategories.get(i);
+    }
 /*--------------------------------------------*/
     public void addGroup(Group g) {
         userGroups.add(g);
@@ -114,6 +129,9 @@ public class User {
     }
     public void addUserCategory(Category cat) {
         userCategories.add(cat);
+    }
+    public void setCurrentCategory(Category c) {
+        currentCategory = c;
     }
     public void removeGroup(Group g) {
         boolean found = false;

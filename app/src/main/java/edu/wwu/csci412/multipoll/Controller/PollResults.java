@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Element;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
@@ -42,8 +43,8 @@ public class PollResults extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.pollOptions);
 
-//        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, user.getCurrentPoll().getOptions());
-//        lv.setAdapter(arrayAdapter);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentPoll().listElements(user.getCurrentPoll().getElements()));
+        lv.setAdapter(arrayAdapter);
 
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
