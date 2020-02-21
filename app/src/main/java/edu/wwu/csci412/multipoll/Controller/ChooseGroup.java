@@ -28,6 +28,7 @@ public class ChooseGroup extends AppCompatActivity {
         controller = MainActivity.getController();
         user = controller.getUser();
 
+
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.groups);
 
