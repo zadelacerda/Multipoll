@@ -7,8 +7,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import javax.security.auth.callback.Callback;
 
 import edu.wwu.csci412.multipoll.Model.Category;
 import edu.wwu.csci412.multipoll.Model.Controller;
@@ -28,12 +31,39 @@ public class ChooseElements extends AppCompatActivity {
         controller = MainActivity.getController();
         user = controller.getUser();
 
+        /* set up search view */
+        SearchView searchView = findViewById(R.id.search_elements);
+        searchView.setQueryHint("Search " + user.getCurrentPoll().getCategory());
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                getUsers(newText, new Callback() {
+//                    @Override
+//                    public void onCallback(Object value) {
+//                        restaurants = (ArrayList<RestaurantFirebase>) value;
+//                        restaurantAdapter.updateData(restaurants);
+//                    }
+//                });
+//
+//                return false;
+//            }
+//        });
+
+
+
+
+        /* list view of elements for current category */
         ArrayAdapter<String> arrayAdapter;
         ListView lv = findViewById(R.id.elements);
-
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentPoll().listElements(user.getCurrentPoll().getElements()));
         lv.setAdapter(arrayAdapter);
 
+        /* on click listener for list view buttons */
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
