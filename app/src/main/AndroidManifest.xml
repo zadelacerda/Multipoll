@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".Controller.MainActivity">
+        </activity>
+<!--        <activity android:name=".Chat"></activity>-->
+        <activity android:name=".Controller.ChooseGroup"></activity>
+        <activity android:name=".Controller.ChooseCategory"></activity>
+        <activity android:name=".Controller.ChooseElements"></activity>
+        <activity android:name=".Controller.Groups"></activity>
+        <activity android:name=".Controller.GroupSelected"></activity>
         <activity android:name=".Controller.NewGroup"></activity>
         <activity android:name=".Controller.NewFriend" />
         <activity android:name=".Controller.MainActivity" /> <!-- <activity android:name=".Chat"></activity> -->
@@ -22,7 +31,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.Signup" />
+        <activity android:name=".Controller.Signup"></activity>
+        <activity android:name=".Controller.Friends"></activity>
+        <activity android:name=".Controller.FriendSelected"></activity>
+        <activity android:name=".Controller.PollResults"></activity>
+
     </application>
 
 </manifest>

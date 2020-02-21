@@ -3,35 +3,47 @@ package edu.wwu.csci412.multipoll.Controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.wwu.csci412.multipoll.Model.Category;
 import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
 public class ChooseGroup extends AppCompatActivity {
+
+    public static Controller controller;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_group);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        controller = MainActivity.getController();
+        user = controller.getUser();
 
 
+        ArrayAdapter<String> arrayAdapter;
+        ListView lv = findViewById(R.id.groups);
 
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.listGroups(user.getGroups()));
+        lv.setAdapter(arrayAdapter);
 
-        Button toCategory = this.findViewById(R.id.group_selected_button);
-
-        toCategory.setOnClickListener(new View.OnClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
                 Intent intent = new Intent (ChooseGroup.this, ChooseCategory.class);
+                user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
                 startActivity(intent);
             }
         });
     }
-
-
 }

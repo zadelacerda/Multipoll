@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/gradient">
 
-</RelativeLayout>
+
+    <SearchView
+        android:id="@+id/search_elements"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+
+
+    <ListView
+        android:id="@+id/elements"
+        android:layout_width="match_parent"
+        android:layout_height="566dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:scrollbars="vertical">
+
+    </ListView>
+
+<!--    <com.simplemobiletools.commons.views.MyFloatingActionButton-->
+<!--        android:id="@+id/add_element"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/activity_margin"-->
+<!--        android:contentDescription="@string/new_event"-->
+<!--        android:src="@drawable/ic_plus_vector"-->
+<!--        app:backgroundTint="@color/Gray"/>-->
+<!--&lt;!&ndash;        app:rippleColor="@color/pressed_item_foreground"/>&ndash;&gt;-->
+
+</LinearLayout>

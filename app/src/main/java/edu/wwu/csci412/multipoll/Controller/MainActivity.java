@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         controller = new Controller();
         dbcontroller = new DatabaseController();
 
-        Button createPoll = this.findViewById(R.id.createPollMain);
+        Button createPoll = this.findViewById(R.id.createPoll);
         Button Groups = this.findViewById(R.id.Groups);
 //        Button SignUp = this.findViewById(R.id.)
 
