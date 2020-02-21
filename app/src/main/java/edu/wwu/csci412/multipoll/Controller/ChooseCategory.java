@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import edu.wwu.csci412.multipoll.Model.Category;
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.User;
@@ -44,9 +43,9 @@ public class ChooseCategory  extends AppCompatActivity {
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { 
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
 
-                String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
                 Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
                 user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
 
