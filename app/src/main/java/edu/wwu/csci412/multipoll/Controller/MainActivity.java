@@ -12,6 +12,7 @@ import edu.wwu.csci412.multipoll.R;
 
 public class MainActivity extends AppCompatActivity {
     public static Controller controller;
+    public static DatabaseController dbcontroller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        controller = new Controller();
+        //controller = new Controller();
+        //dbcontroller = new DatabaseController();
 
-        Button createPoll = this.findViewById(R.id.createPollMain);
+        Button createPoll = this.findViewById(R.id.createPoll);
         Button Groups = this.findViewById(R.id.Groups);
 //        Button SignUp = this.findViewById(R.id.)
 
@@ -48,3 +50,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

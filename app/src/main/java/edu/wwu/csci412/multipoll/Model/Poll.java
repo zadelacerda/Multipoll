@@ -1,75 +1,88 @@
 package edu.wwu.csci412.multipoll.Model;
 
 import java.util.ArrayList;
-
-import edu.wwu.csci412.multipoll.Controller.User;
+import java.util.List;
 
 /* Poll class */
 
 public class Poll {
 
-    private static String name; // name of poll
-    private static User owner; // owner of poll
-    private static boolean status; // status of poll (active - true/ inactive - false)
-    private static Category category; // type of category
-    private static ArrayList<Elements> elements; // list of elements to vote on
-    private static Group target; // target group for this poll
+    private String name; // name of poll
+    private String owner; // ownerID of poll
+    private String pollID; // poll ID
+    private boolean status; // status of poll (active - true/ inactive - false)
+    private String category; // type of category
+    private ArrayList<Element> elements; // list of elements to vote on
+    private String target; // group_id for this poll
 
-    public Poll(User user, String name) {
-        this.name = name;
-        status = true;
-        owner = user;
+    public Poll(){
+
     }
 
-    public static String getName() {
+    public Poll(User u, String n) {
+        name = n;
+        status = true;
+        elements = new ArrayList<>();
+    }
+
+    public String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        Poll.name = name;
+    public void setName(String n) {
+        name = n;
     }
 
-    public static User getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public static void setOwner(User owner) {
-        Poll.owner = owner;
+    public void setOwner(String o) {
+        owner = o;
     }
 
-    public static boolean isStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public static void setStatus(boolean status) {
-        Poll.status = status;
+    public void setStatus(boolean s) {
+        status = s;
     }
 
-    public static Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public static void setCategory(Category category) {
-        Poll.category = category;
+    public void setCategory(String c) {
+        category = c;
     }
 
-    public static ArrayList<Elements> getElements() {
+    public List<String> listElements(ArrayList<Element> elements) {
+        List<String> elementNames = new ArrayList<>();
+        for (int i=0; i<elements.size(); i++) {
+            elementNames.add(elements.get(i).getName());
+        }
+        return elementNames;
+    }
+
+    public ArrayList<Element> getElements() {
         return elements;
     }
 
-    public static void setElements(ArrayList<Elements> elements) {
-        Poll.elements = elements;
+    public void setElements(ArrayList<Element> e) {
+        elements = e;
     }
 
-    public static void addElement(Elements element){
+    public void addElement(Element element){
         elements.add(element);
     }
 
-    public static Group getTarget() {
+    public String getTarget() {
         return target;
     }
 
-    public static void setTarget(Group target) {
-        Poll.target = target;
+    public void setTarget(String t) {
+        target = t;
     }
+
 }
