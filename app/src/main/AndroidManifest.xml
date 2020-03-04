@@ -20,6 +20,7 @@
         <activity android:name=".Controller.GroupSelected"></activity>
         <activity android:name=".Controller.NewGroup"></activity>
         <activity android:name=".Controller.NewFriend" />
+
         <activity android:name=".Controller.Signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

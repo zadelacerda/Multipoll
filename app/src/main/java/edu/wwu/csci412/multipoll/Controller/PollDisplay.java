@@ -27,7 +27,7 @@ public class PollDisplay extends Fragment {
     private static User user;
     private static Group currentGroup;
     private static Poll currentPoll;
-    private Toolbar toolbar;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_poll_display, container, false);
@@ -48,7 +48,6 @@ public class PollDisplay extends Fragment {
         lv.setAdapter(arrayAdapter);
 
         // Select chosen poll
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
