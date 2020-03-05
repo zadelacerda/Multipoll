@@ -8,14 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Element;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.Poll;
 
@@ -60,6 +66,7 @@ public class PollDisplay extends Fragment {
 
             }
         });
+
         return view;
     }
 }

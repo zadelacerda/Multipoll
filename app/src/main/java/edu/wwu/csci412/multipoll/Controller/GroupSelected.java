@@ -22,10 +22,17 @@ public class GroupSelected extends AppCompatActivity {
         User user = controller.getUser();
         Group currentGroup = user.getCurrentGroup();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         // Display polls of selected groups in the fragment
         if(savedInstanceState == null){
             getSupportActionBar().setTitle(currentGroup.getName());
             getSupportFragmentManager().beginTransaction().replace(R.id.displayPolls, new PollDisplay()).commit();
         }
     }
+
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true; }
 }
