@@ -103,8 +103,12 @@ public class ChooseGroup extends AppCompatActivity {
                     List<Group> ng = user.getGroups();
                     newg.setGroupID(gId);
                     FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
+                    Toast.makeText(ChooseGroup.this, "New Group Added", Toast.LENGTH_SHORT).show();
+
 //              Intent myIntent = new Intent(this, NewGroup.class);
 //              this.startActivity(myIntent);
+                } else {
+                    Toast.makeText(ChooseGroup.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });

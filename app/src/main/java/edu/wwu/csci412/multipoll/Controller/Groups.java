@@ -76,6 +76,7 @@ public class Groups extends AppCompatActivity {
     }
 
     @Override public boolean onSupportNavigateUp() {
-        onBackPressed();
+        Intent intent = new Intent(Groups.this, MainActivity.class);
+        startActivity(intent);
         return true; }
 }
