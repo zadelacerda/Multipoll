@@ -4,13 +4,13 @@ import edu.wwu.csci412.multipoll.Controller.DatabaseController;
 
 public class Controller {
 
-    private static User user = new User();
+    private static User user = new User(0);
 
     private Group roommates = new Group("Roommates");
     private Group coworkers = new Group("Co-workers");
     private Category restaurants =  new Category("Restaurants");
     private Category movies = new Category("Movies");
-    private Category date_ideas = new Category("Date Ideas");
+    //privawate Category date_ideas = new Category("Date Ideas");
 
     private Poll birthday = new Poll(user, "Ben's Birthday");
     private Poll meeting = new Poll(user, "Meeting");
@@ -26,33 +26,36 @@ public class Controller {
 
 
     public Controller() {
-        user.addGroup(roommates);
-        user.addGroup(coworkers);
-        user.addUserCategory(movies);
-        user.addUserCategory(date_ideas);
-        restaurants.add(r1);
-        restaurants.add(r2);
-        restaurants.add(r3);
-        user.addUserCategory(restaurants);
+//        user.addGroup(roommates);
+//        user.addGroup(coworkers);
+//        user.addUserCategory(movies);
+//        user.addUserCategory(date_ideas);
+//        restaurants.add(r1);
+//        restaurants.add(r2);
+//        restaurants.add(r3);
+//        user.addUserCategory(restaurants);
 
 
-        user.setCurrentPoll(dinner);
-//        user.getCategory("restaurants").add(r1);
-//        user.getCategory("restaurants").add(r3);
-//        user.getCategory("restaurants").add(r2);
-        user.getCurrentPoll().addElement(r2);
-        user.getCurrentPoll().addElement(r3);
-
-        user.getGroup("Roommates").addPoll(birthday);
-        user.getGroup("Roommates").addPoll(meeting);
-        user.getGroup("Roommates").addPoll(dinner);
-
-        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option1);
-        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option2);
-        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option3);
+//        user.setCurrentPoll(dinner);
+////        user.getCategory("restaurants").add(r1);
+////        user.getCategory("restaurants").add(r3);
+////        user.getCategory("restaurants").add(r2);
+//        user.getCurrentPoll().addElement(r2);
+//        user.getCurrentPoll().addElement(r3);
+//
+//        user.getGroup("Roommates").addPoll(birthday);
+//        user.getGroup("Roommates").addPoll(meeting);
+//        user.getGroup("Roommates").addPoll(dinner);
+//
+//        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option1);
+//        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option2);
+//        user.getGroup("Roommates").getPoll("Ben's Birthday").addElement(option3);
 
     }
     public User getUser() {
         return user;
+    }
+    public void setUser(User us){
+        user = us;
     }
 }

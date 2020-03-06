@@ -10,6 +10,10 @@ public class Element {
     private String description; //description of element
     private int voteCounter; //vote counter for element
 
+    public Element(){
+
+    }
+
     public Element(String n, int newID){
          name = n;
          voteCounter = 0;

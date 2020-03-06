@@ -82,7 +82,7 @@ public class ChooseElements extends AppCompatActivity {
         /* List of elements for current category */
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentCategory().getElements());
 //        LinearLayout.LayoutParams buttonparam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1.0f);
-        for (int i = 0; i < arrayAdapter.getCount(); i++) {
+        for (int i = 0; i < user.getCurrentCategory().getElements().size(); i++) {
             Element element = arrayAdapter.getItem(i);
             CheckBox checkBox = new CheckBox(this);
             checkBox.setId(element.getId());
@@ -100,9 +100,10 @@ public class ChooseElements extends AppCompatActivity {
                 if (!newString.equals("")) {
                     Element newElement = new Element(search.getText().toString(), arrayAdapter.getCount());
                     arrayAdapter.add(newElement);
-                    user.getCurrentCategory().add(newElement);
+                    newElement.setId(user.getCurrentCategory().getElements().size());
+                    user.getCurrentCategory().addElement(newElement);
                     List<Element> newList = user.getCurrentCategory().getElements();
-                    databaseReference.child("users").child(user.getUserName()).child("userCategories").child(user.getCurrentCategory().getName()).child("elementList").setValue(newList);
+                    databaseReference.child("users").child(user.getUserName()).child("userCategories").child(user.getCurrentCategory().getId()).child("elementList").setValue(newList);
                     arrayAdapter.notifyDataSetChanged();
                     Toast.makeText(ChooseElements.this, "New Element Added", Toast.LENGTH_SHORT).show();
 
