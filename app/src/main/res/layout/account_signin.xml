@@ -85,7 +85,7 @@
         android:layout_marginBottom="32dp"
         android:onClick="newUser"
         android:text="New User"
-        android:alpha=".25"
+        android:background="@color/DarkCyan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
