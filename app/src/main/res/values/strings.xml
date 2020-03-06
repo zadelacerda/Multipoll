@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MultiPoll</string>
     <string name="new_event">New Event</string>
-</resources>
+
+    <integer name="btnplusview">1</integer>
+    <integer name="btnpluspos">2</integer>
+    </resources>
