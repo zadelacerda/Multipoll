@@ -4,14 +4,21 @@ package edu.wwu.csci412.multipoll.Model;
 
 public class Element {
 
+    private boolean isSelected;
+    private int id; //id of element
     private String name; //name of element
     private String description; //description of element
     private int voteCounter; //vote counter for element
 
-    public Element(String n, String d){
+    public Element(String n){
          name = n;
-         description = d;
          voteCounter = 0;
+    }
+
+    public Element(String n, String d){
+        name = n;
+        description = d;
+        voteCounter = 0;
     }
 
     public String getName() {
@@ -38,4 +45,19 @@ public class Element {
          voteCounter = vc;
     }
 
+    public boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
