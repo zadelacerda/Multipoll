@@ -37,7 +37,7 @@ public class NewGroup extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseRef = mFirebaseDatabase.getReference();
     }
-
+    //Onclick for new group, adds to Model and database
     public void createGroup(View v){
         EditText gname = (EditText) findViewById(R.id.editgn);
         String groupName = gname.getText().toString();
@@ -54,10 +54,6 @@ public class NewGroup extends AppCompatActivity {
             startActivity(intent);
         }
 
-
-        //UserInfo test = MainActivity.dbcontroller.getDataByUser(groupName);
-
-        //tv.setText(test.getPassword());
 
 
 

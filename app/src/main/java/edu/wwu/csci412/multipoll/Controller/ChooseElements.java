@@ -105,6 +105,13 @@ public class ChooseElements extends AppCompatActivity {
                     List<Element> newList = user.getCurrentCategory().getElements();
                     databaseReference.child("users").child(user.getUserName()).child("userCategories").child(user.getCurrentCategory().getId()).child("elementList").setValue(newList);
                     arrayAdapter.notifyDataSetChanged();
+                    LinearLayout linearLayout = findViewById(R.id.elementContainer);
+                    CheckBox checkBox = new CheckBox(ChooseElements.this);
+                    checkBox.setId(newElement.getId());
+                    checkBox.setText(newElement.getName());
+//            checkBox.setLayoutParams(buttonparam);
+                    checkBox.setWidth(linearLayout.getWidth());
+                    linearLayout.addView(checkBox);
                     Toast.makeText(ChooseElements.this, "New Element Added", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -112,12 +119,9 @@ public class ChooseElements extends AppCompatActivity {
                 }
             }
         });
-//        setContentView(linearLayout);
     }
 
-//        public void onCheckboxClicked(View view){
-//        }
-//        }
+
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {

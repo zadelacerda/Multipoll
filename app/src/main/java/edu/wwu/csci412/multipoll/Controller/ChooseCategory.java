@@ -111,6 +111,8 @@ public class ChooseCategory  extends AppCompatActivity {
                     List<Category> newList = user.getUserCategories();
                     databaseReference.child("users").child(user.getUserName()).child("userCategories").setValue(newList);
                     arrayAdapter.notifyDataSetChanged(); // refresh GUI
+                    ListView list = findViewById(R.id.categoryList);
+                    list.setAdapter(arrayAdapter);
                     Toast.makeText(ChooseCategory.this, "New Category Added", Toast.LENGTH_SHORT).show();
 //                    updateView();
                 } else {
