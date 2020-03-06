@@ -73,8 +73,8 @@ public class ChooseElements extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String TempListViewClickedValue = user.getCurrentPoll().listElements(user.getCurrentPoll().getElements()).get(position);
-                Intent intent = new Intent (ChooseElements.this, GroupSelected.class);
-//                user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
+                user.setCurrentElement(TempListViewClickedValue);
+                Intent intent = new Intent (ChooseElements.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

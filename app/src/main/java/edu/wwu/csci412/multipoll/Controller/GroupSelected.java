@@ -1,6 +1,9 @@
 package edu.wwu.csci412.multipoll.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,6 +35,23 @@ public class GroupSelected extends AppCompatActivity {
         }
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.polls_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent;
+        switch ( id ) {
+            case R.id.addPoll:
+                intent = new Intent(GroupSelected.this, ChooseCategory.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected( item );
+        }
+    }
     @Override public boolean onSupportNavigateUp() {
         onBackPressed();
         return true; }

@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.Group;
@@ -25,6 +29,31 @@ public class NewGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_new_group);
+
+        // Get Friends
+        controller = MainActivity.getController();
+        user = controller.getUser();
+
+        // Initialize views
+        SearchView searchFriends = findViewById(R.id.searchFriends);
+        searchFriends.setFocusableInTouchMode(true);
+        ArrayAdapter<String> arrayAdapter;
+        ListView lv = findViewById(R.id.friendsList);
+
+        // Make group list
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.listGroups(user.getGroups()));
+        lv.setAdapter(arrayAdapter);
+
+        // Select group
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
+                Intent intent = new Intent (NewGroup.this, FriendSelected.class);
+                //user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
+                startActivity(intent);
+            }
+        });
     }
 
     public void onStart( ) {
@@ -51,12 +80,6 @@ public class NewGroup extends AppCompatActivity {
         //User test = MainActivity.dbcontroller.getDataByUser(groupName);
 
         //gname.setText(test.getPassword());
-
-
-
-
-
-
 
     }
 }

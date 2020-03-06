@@ -5,45 +5,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.NewGroup">
+    tools:context=".Controller.NewGroup"
+    android:background="@drawable/gradient" >
 
-
-    <TextView
-        android:id="@+id/newgroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:text="Create new group"
-        android:textAlignment="center"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/entergn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/entergn"
         android:layout_width="193dp"
         android:layout_height="34dp"
+        android:layout_marginTop="16dp"
         android:text="Enter Group Name"
         android:textAlignment="center"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/editgn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editgn"
         android:layout_width="297dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="200dp"
         android:lines="1"
         android:maxLength="20"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entergn" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="14dp"
+        android:background="#006400"
+        app:layout_constraintBottom_toTopOf="@+id/yourFriends"
+        app:layout_constraintTop_toBottomOf="@+id/editgn"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/yourFriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Your Friends"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <LinearLayout
+        android:id="@+id/friendsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+    </LinearLayout>
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -55,5 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
