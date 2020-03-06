@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.wwu.csci412.multipoll">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,15 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Controller.MainActivity">
-        </activity>
-<!--        <activity android:name=".Chat"></activity>-->
-        <activity android:name=".Controller.ChooseGroup"></activity>
-        <activity android:name=".Controller.ChooseCategory"></activity>
-        <activity android:name=".Controller.ChooseElements"></activity>
-        <activity android:name=".Controller.Groups"></activity>
-        <activity android:name=".Controller.GroupSelected"></activity>
-        <activity android:name=".Controller.NewGroup"></activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Controller.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".Controller.MainActivity"></activity> <!-- <activity android:name=".Chat"></activity> -->
+        <activity android:name=".Controller.ChooseGroup" />
+        <activity android:name=".Controller.ChooseCategory" />
+        <activity android:name=".Controller.ChooseElements" />
+        <activity android:name=".Controller.Groups" />
+        <activity android:name=".Controller.GroupSelected" />
+        <activity android:name=".Controller.NewGroup" />
         <activity android:name=".Controller.NewFriend" />
         <activity android:name=".Controller.Signin">
             <intent-filter>
@@ -27,11 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.Signup"></activity>
-        <activity android:name=".Controller.Friends"></activity>
-        <activity android:name=".Controller.FriendSelected"></activity>
-        <activity android:name=".Controller.PollResults"></activity>
-
+        <activity android:name=".Controller.Signup" />
+        <activity android:name=".Controller.Friends" />
+        <activity android:name=".Controller.FriendSelected" />
+        <activity android:name=".Controller.PollResults" />
     </application>
 
 </manifest>

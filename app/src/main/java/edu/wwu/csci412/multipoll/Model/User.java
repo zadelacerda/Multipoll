@@ -19,6 +19,7 @@ public class User {
     private static Group currentGroup;
     private static Poll currentPoll;
     private static Category currentCategory;
+    private static String currentElement;
 
     public User() {
 
@@ -117,6 +118,9 @@ public class User {
         }
         return userCategories.get(i);
     }
+    public String getCurrentElement() {
+        return currentElement;
+    }
 /*--------------------------------------------*/
     public void addGroup(Group g) {
         userGroups.add(g);
@@ -133,6 +137,10 @@ public class User {
     public void setCurrentCategory(Category c) {
         currentCategory = c;
     }
+    public void setCurrentElement(String e) {
+        currentElement = e;
+    }
+/*--------------------------------------------*/
     public void removeGroup(Group g) {
         boolean found = false;
         int i = -1;

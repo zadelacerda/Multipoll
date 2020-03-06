@@ -49,7 +49,7 @@ public class ChooseCategory  extends AppCompatActivity {
         controller = MainActivity.getController();
         user = controller.getUser();
 
-        /* Toolbar setup */
+
         getSupportActionBar().setTitle("Choose Category " + "(" + user.getCurrentGroup().getName() + ")");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -78,7 +78,7 @@ public class ChooseCategory  extends AppCompatActivity {
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
 
                 Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
@@ -99,7 +99,6 @@ public class ChooseCategory  extends AppCompatActivity {
             }
         });
     }
-
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {

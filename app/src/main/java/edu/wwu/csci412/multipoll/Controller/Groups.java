@@ -60,9 +60,14 @@ public class Groups extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Intent intent;
         switch ( id ) {
             case R.id.friends:
-                Intent intent = new Intent (Groups.this, Friends.class);
+                intent = new Intent (Groups.this, Friends.class);
+                startActivity(intent);
+                return true;
+            case R.id.addGroup:
+                intent = new Intent(Groups.this, NewGroup.class);
                 startActivity(intent);
                 return true;
             default:
