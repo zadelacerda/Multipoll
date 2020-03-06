@@ -9,10 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ public class ChooseCategory  extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+
     private List<String> categoryList;
 
     @Override
@@ -48,6 +54,10 @@ public class ChooseCategory  extends AppCompatActivity {
         /* Fake Database */
         controller = MainActivity.getController();
         user = controller.getUser();
+
+        /* Real Database */
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
 
         /* Toolbar setup */
         getSupportActionBar().setTitle("Choose Category " + "(" + user.getCurrentGroup().getName() + ")");
@@ -92,10 +102,19 @@ public class ChooseCategory  extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newCategory = search.getText().toString();
-                arrayAdapter.add(newCategory);
-                user.addUserCategory(new Category(newCategory));
-                arrayAdapter.notifyDataSetChanged();
+                String newString = search.getText().toString();
+                if (!newString.equals("")) {
+                    Category newCategory = new Category(newString);
+                    arrayAdapter.add(newString); // update GUI
+                    user.addUserCategory(newCategory); // update "database"
+                    //List<Category> newList = user.getUserCategories();
+                    databaseReference.child("users").child(user.getUserName()).child("userCategories").child(newCategory.getName()).setValue(newCategory);
+                    arrayAdapter.notifyDataSetChanged(); // refresh GUI
+                    Toast.makeText(ChooseCategory.this, "New Category Added", Toast.LENGTH_SHORT).show();
+//                    updateView();
+                } else {
+                    Toast.makeText(ChooseCategory.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

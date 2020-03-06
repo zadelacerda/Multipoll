@@ -6,7 +6,6 @@ public class Controller {
 
     private static User user = new User();
 
-
     private Group roommates = new Group("Roommates");
     private Group coworkers = new Group("Co-workers");
     private Category restaurants =  new Category("Restaurants");
@@ -17,24 +16,30 @@ public class Controller {
     private Poll meeting = new Poll(user, "Meeting");
     private Poll dinner = new Poll(user, "Family Dinner");
 
-    private Element option1 = new Element("Laser Tag", "");
-    private Element option2 = new Element("Movie Night", "");
-    private Element option3 = new Element("Arcade", "");
+    private Element option1 = new Element("Laser Tag", 0);
+    private Element option2 = new Element("Movie Night", 1);
+    private Element option3 = new Element("Arcade", 2);
 
-    private Element r1 = new Element("Mambo Italiano", "");
-    private Element r2 = new Element("D'Annas", "");
-    private Element r3 = new Element("La Fiamma", "");
+    private Element r1 = new Element("Mambo Italiano", 0);
+    private Element r2 = new Element("D'Annas", 1);
+    private Element r3 = new Element("La Fiamma", 2);
 
 
     public Controller() {
         user.addGroup(roommates);
         user.addGroup(coworkers);
-        user.addUserCategory(restaurants);
         user.addUserCategory(movies);
         user.addUserCategory(date_ideas);
+        restaurants.add(r1);
+        restaurants.add(r2);
+        restaurants.add(r3);
+        user.addUserCategory(restaurants);
+
 
         user.setCurrentPoll(dinner);
-        user.getCurrentPoll().addElement(r1);
+//        user.getCategory("restaurants").add(r1);
+//        user.getCategory("restaurants").add(r3);
+//        user.getCategory("restaurants").add(r2);
         user.getCurrentPoll().addElement(r2);
         user.getCurrentPoll().addElement(r3);
 
