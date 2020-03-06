@@ -17,6 +17,8 @@ import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -86,10 +88,16 @@ public class ChooseGroup extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              Intent myIntent = new Intent(this, AddGroup.class);
+//              Intent myIntent = new Intent(this, NewGroup.class);
 //              this.startActivity(myIntent);
             }
         });
+    }
+
+    // Back functionality
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 
