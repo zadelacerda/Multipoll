@@ -1,16 +1,35 @@
 package edu.wwu.csci412.multipoll.Controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.wwu.csci412.multipoll.Model.Category;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Element;
+import edu.wwu.csci412.multipoll.Model.Group;
+import edu.wwu.csci412.multipoll.Model.User;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
-
+import android.widget.TextView;
+import android.widget.EditText;
+import android.util.Log;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.FirebaseDatabase;;
 import edu.wwu.csci412.multipoll.R;
+
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Signin extends AppCompatActivity {
 
@@ -19,43 +38,110 @@ public class Signin extends AppCompatActivity {
     private DatabaseReference dbReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        MainActivity.controller = new Controller();
+
         setContentView(R.layout.account_signin);
         mAuth = FirebaseAuth.getInstance();
         //dbReference = FirebaseDatabase.getReference("users");
 
     }
-    public void Login(View v){
-//        final TextView txt = (TextView) findViewById(R.id.enterpass);
-//        final EditText textu = (EditText) findViewById(R.id.edituser);
-//        EditText textp = (EditText) findViewById(R.id.editpass);
-//        String user = (String) textu.getText().toString();
-//        String pass = (String) textp.getText().toString();
-//        if(!user.equals("") && !pass.equals("")) {
-//            mAuth.signInWithEmailAndPassword(user, pass)
-//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                // Sign in success, update UI with the signed-in user's information
-//                                Log.d(TAG, "signInWithEmail:success");
-//                                FirebaseUser user = mAuth.getCurrentUser();
-//
-//                                txt.setText(user.getDisplayName());
-                                Intent intent = new Intent(Signin.this, MainActivity.class);
-                                startActivity(intent);
-//                            } else {
-//                                // If sign in fails, display a message to the user.
-//                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                                Toast.makeText(Signin.this, "Authentication failed.",
-//                                        Toast.LENGTH_SHORT).show();
-//                                updateView(null);
-//                            }
 
-                            // ...
-//                        }
-//                    });
- //              }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    public void Login(View v){
+        TextView txt = (TextView) findViewById(R.id.enterpass);
+        EditText textu = (EditText) findViewById(R.id.edituser);
+        EditText textp = (EditText) findViewById(R.id.editpass);
+        String usern = (String) textu.getText().toString();
+        String pass = (String) textp.getText().toString();
+        if(!usern.equals("") && !pass.equals("")) {
+
+            FirebaseDatabase.getInstance().getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    EditText textu = (EditText) findViewById(R.id.edituser);
+                    EditText textp = (EditText) findViewById(R.id.editpass);
+                    String usern = (String) textu.getText().toString();
+                    String pass = (String) textp.getText().toString();
+                    int userTrue = 0;
+
+                    //Cycles through the Users
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String un = snapshot.child("userName").getValue(String.class);
+                        String pa = snapshot.child("password").getValue(String.class);
+
+                        //Checks if username and pass are correct
+                        if (un.equals(usern)) {
+                            if(pa.equals(pass)) {
+                                userTrue = 1;
+                                MainActivity.getController().setUser(snapshot.getValue(User.class));
+                                User user =  MainActivity.getController().getUser();
+                                user.getGroups().clear();
+                                user.getFriends().clear();
+                                user.getUserCategories().clear();
+                                //Fills model with groups
+                                for( DataSnapshot snap : snapshot.child("userGroups").getChildren()){
+
+                                    user.addGroup(snap.getValue(Group.class));
+
+                                }
+                                //Fills model with friends
+                                for( DataSnapshot snap : snapshot.child("friends").getChildren()){
+                                    user.addFriend(snap.getValue(String.class));
+
+                                }
+                                int i = 0;
+                                user.getUserCategories().clear();
+                                //Fills model with Categories
+                                for( DataSnapshot snap : snapshot.child("userCategories").getChildren()){
+                                    Category cat = new Category();
+                                    //Fills model with Elements
+                                    for(DataSnapshot sn : snap.child("elementList").getChildren()){
+                                        //Elist.add(sn.getValue(Element.class));
+                                        cat.addElement(sn.getValue(Element.class));
+                                    }
+                                    cat.setName(snap.child("name").getValue(String.class));
+                                    cat.setId(snap.child("id").getValue(String.class));
+                                    cat.setUser(snapshot.child("userName").getValue(String.class));
+                                    user.addUserCategory(cat);
+
+                                    i++;
+
+                                }
+                            }
+                        }
+                        //If user is there
+                        if(userTrue == 1){
+
+
+                            Toast.makeText(Signin.this, "Signed In.",
+                                    Toast.LENGTH_SHORT).show();
+                            userTrue = 0;
+                            Intent intent = new Intent(Signin.this, MainActivity.class);
+                            startActivity(intent);
+                            return;
+                        }
+
+                    }
+                    Toast.makeText(Signin.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+
+        }
     }
 
     public void newUser(View v){
