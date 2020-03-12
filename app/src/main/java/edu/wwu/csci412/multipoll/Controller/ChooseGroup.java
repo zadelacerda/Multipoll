@@ -93,18 +93,18 @@ public class ChooseGroup extends AppCompatActivity {
                 //EditText gname = (EditText) findViewById(R.id.editgn);
                 String groupName = search.getText().toString();
                 if (!groupName.equals("")) {
-                    TextView tv = (TextView) findViewById(R.id.newgroup);
-                    Group newg = new Group(groupName);
-                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
-                    arrayAdapter.add(newg.getName());
-                    ListView list = findViewById(R.id.groupList);
-                    list.setAdapter(arrayAdapter);
-                    user.addGroup(newg);
-                    List<Group> ng = user.getGroups();
-                    newg.setGroupID(gId);
-                    FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
-//              Intent myIntent = new Intent(this, NewGroup.class);
-//              this.startActivity(myIntent);
+//                    TextView tv = (TextView) findViewById(R.id.newgroup);
+//                    Group newg = new Group(groupName);
+//                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
+//                    arrayAdapter.add(newg.getName());
+//                    ListView list = findViewById(R.id.groupList);
+//                    list.setAdapter(arrayAdapter);
+//                    user.addGroup(newg);
+//                    List<Group> ng = user.getGroups();
+//                    newg.setGroupID(gId);
+//                    FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
+              Intent myIntent = new Intent(ChooseGroup.this, CreateGroup.class);
+              startActivity(myIntent);
                 }
             }
         });

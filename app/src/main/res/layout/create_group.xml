@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/searchElement"
+        android:id="@+id/searchFriend"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         tools:layout_editor_absoluteX="19dp"
@@ -19,15 +19,15 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/elementContainer"
+        android:id="@+id/friendContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchElement">
+        android:layout_below="@id/searchFriend">
     </LinearLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addElement"
+        android:id="@+id/addFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
