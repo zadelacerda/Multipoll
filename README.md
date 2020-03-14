@@ -1,6 +1,6 @@
 # Multipoll
 
-Android app designed to help groups of people make decisions by voting on it.
+Android app designed to help groups of people make decisions by voting on them.
 
 ## Try it out
 
