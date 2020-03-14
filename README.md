@@ -22,5 +22,5 @@ Download .apk file on Android device to run the app.
 
 ## Acknowledgments
 
-* Instructor: Shameem Ahmed
+* Shameem Ahmed, Instructor
 * Voters, a 24-hour hackathon project which was where this idea originated from
