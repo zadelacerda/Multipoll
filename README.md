@@ -30,9 +30,9 @@ Android app designed to help groups of people make decisions by voting on them.
 
 ## Authors
 
-* **Zephren de la Cerda** - *Initial work* - [zadelacerda](https://github.com/zadelacerda)
-* **Andrew Strong** 
-* **Mikel Bresko** - *Initial work* - [zadelacerda](https://github.com/zadelacerda)
+* **Zephren de la Cerda** - [zadelacerda](https://github.com/zadelacerda)
+* **Andrew Strong** -[stronga3](https://github.com/stronga3)
+* **Mikel Bresko** - [mikelbresko](https://github.com/mikelbresko)
 
 
 ## Acknowledgments
