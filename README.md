@@ -1,4 +1,4 @@
-# Multipoll
+# Multipoll [Google Doc](https://docs.google.com/document/d/1Hgn7BJEUxq-E4OxG5F8347YoHkufMA37tNLZ_wmaHZU/edit)
 
 Android app designed to help groups of people make decisions by voting on them.
 
