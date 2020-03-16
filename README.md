@@ -38,4 +38,4 @@ Android app designed to help groups of people make decisions by voting on them.
 ## Acknowledgments
 
 * Shameem Ahmed, Instructor
-* Voters, a 24-hour hackathon project which was where this idea originated from
+* Voters, a 24-hour hackathon project that this app idea originated from
