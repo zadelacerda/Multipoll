@@ -10,13 +10,10 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.security.auth.callback.Callback;
 
@@ -35,9 +32,6 @@ public class ChooseElements extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
-    private DatabaseReference databaseReference;
-    private FirebaseDatabase firebaseDatabase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +45,6 @@ public class ChooseElements extends AppCompatActivity {
         /* Fake Database */
         controller = MainActivity.getController();
         user = controller.getUser();
-
-        /* Real Database */
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
 
         // Toolbar setup
         getSupportActionBar().setTitle(user.getCurrentCategory().getName());
@@ -80,9 +70,9 @@ public class ChooseElements extends AppCompatActivity {
         });
 
         /* List of elements for current category */
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentCategory().getElements());
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentPoll().getElements());
 //        LinearLayout.LayoutParams buttonparam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1.0f);
-        for (int i = 0; i < user.getCurrentCategory().getElements().size(); i++) {
+        for (int i = 0; i < arrayAdapter.getCount(); i++) {
             Element element = arrayAdapter.getItem(i);
             CheckBox checkBox = new CheckBox(this);
             checkBox.setId(element.getId());
@@ -96,32 +86,18 @@ public class ChooseElements extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newString = search.getText().toString();
-                if (!newString.equals("")) {
-                    Element newElement = new Element(search.getText().toString(), arrayAdapter.getCount());
-                    arrayAdapter.add(newElement);
-                    newElement.setId(user.getCurrentCategory().getElements().size());
-                    user.getCurrentCategory().addElement(newElement);
-                    List<Element> newList = user.getCurrentCategory().getElements();
-                    databaseReference.child("users").child(user.getUserName()).child("userCategories").child(user.getCurrentCategory().getId()).child("elementList").setValue(newList);
-                    arrayAdapter.notifyDataSetChanged();
-                    LinearLayout linearLayout = findViewById(R.id.elementContainer);
-                    CheckBox checkBox = new CheckBox(ChooseElements.this);
-                    checkBox.setId(newElement.getId());
-                    checkBox.setText(newElement.getName());
-//            checkBox.setLayoutParams(buttonparam);
-                    checkBox.setWidth(linearLayout.getWidth());
-                    linearLayout.addView(checkBox);
-                    Toast.makeText(ChooseElements.this, "New Element Added", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(ChooseElements.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
-                }
+                Element newElement = new Element(search.getText().toString());
+                arrayAdapter.add(newElement);
+                user.getCurrentCategory().add(newElement);
+                arrayAdapter.notifyDataSetChanged();
             }
         });
+//        setContentView(linearLayout);
     }
 
-
+//        public void onCheckboxClicked(View view){
+//        }
+//        }
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {

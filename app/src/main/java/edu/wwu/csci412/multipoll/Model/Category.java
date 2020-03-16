@@ -3,18 +3,12 @@ package edu.wwu.csci412.multipoll.Model;
 /* Category class to save previous elements for each category */
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Category {
 
     private String name; // name of category
     private String username; // saved per user not per group/poll
-    private String id;
-    private List<Element> elementList; // list of elements per category
-
-    public Category(){
-        elementList = new ArrayList<>();
-    }
+    private ArrayList<Element> elementList; // list of elements per category
 
     public Category(String n) {
         name = n;
@@ -37,23 +31,15 @@ public class Category {
         username = u;
     }
 
-    public List<Element> getElements() {
+    public ArrayList<Element> getElements() {
         return elementList;
     }
 
-    public void addElement(Element e){
+    public void add(Element e){
         elementList.add(e);
     }
 
-    public void setElements(List<Element> e) {
+    public void setElements(ArrayList<Element> e) {
         elementList = e;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

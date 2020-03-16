@@ -8,10 +8,7 @@ public class Group {
     private String groupID;
     private ArrayList<String> members;
     private ArrayList<Poll> polls;
-    public Group(){
-        members = new ArrayList<>();
-        polls = new ArrayList<>();
-    }
+
     public Group(String n) {
         name = n;
         members = new ArrayList<>();

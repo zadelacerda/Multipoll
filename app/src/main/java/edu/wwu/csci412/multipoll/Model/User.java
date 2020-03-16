@@ -21,11 +21,7 @@ public class User {
     private static Category currentCategory;
     private static String currentElement;
 
-    public User(){
-
-    }
-
-    public User(int b) {
+    public User() {
 
         setFirstName("");
         setLastName("");
@@ -88,32 +84,6 @@ public class User {
     public List<Group> getGroups() {
         return userGroups;
     }
-
-    public static String getUserID() {
-        return userID;
-    }
-
-    public static List<String> getFriends() {
-        return friends;
-    }
-
-    public static void setFriends(List<String> friends) {
-        User.friends = friends;
-    }
-    public void addFriend(String name){friends.add(name);}
-
-    public static void setUserCategories(List<Category> userCategories) {
-        User.userCategories = userCategories;
-    }
-
-    public static List<Group> getUserGroups() {
-        return userGroups;
-    }
-
-    public static void setUserGroups(List<Group> userGroups) {
-        User.userGroups = userGroups;
-    }
-
     public Group getGroup(String g) {
         boolean found = false;
         int i = -1;
