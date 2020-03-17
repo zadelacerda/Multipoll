@@ -33,7 +33,10 @@
             android:layout_toRightOf="@+id/searchIcon"
             android:layout_centerVertical="true"
             android:textSize="15sp"
-            android:imeOptions="actionSearch" />
+            android:imeOptions="actionSearch"
+            android:lines="1"
+            android:maxLines="1"
+            android:inputType="text" />
 
     </RelativeLayout>
 

@@ -4,8 +4,7 @@
 
     <item android:id="@+id/create"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="Create"
+        android:title="CreateGroup"
         app:showAsAction="ifRoom"/>
-
 
 </menu>

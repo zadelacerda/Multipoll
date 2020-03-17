@@ -35,12 +35,11 @@
         <activity android:name=".Controller.ChooseCategory" />
         <activity android:name=".Controller.ChooseElements" />
         <activity android:name=".Controller.Groups" />
-
-<!--        <activity android:name=".Controller.GroupSelected" />-->
-        <activity android:name=".Controller.NewGroup" />
-
+        <activity android:name=".Controller.GroupSelected" />
+        <activity android:name=".Controller.FriendSelected" />
         <activity android:name=".Controller.NewFriend" />
         <activity android:name=".Controller.PollResults"/>
+        <activity android:name=".Controller.CreateGroup" />
         <activity android:name=".Controller.Signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,9 +49,7 @@
         </activity>
         <activity android:name=".Controller.Signup" />
         <activity android:name=".Controller.Friends" />
-
-<!--        <activity android:name=".Controller.FriendSelected" />-->
-<!--        <activity android:name=".Controller.PollResults" />-->
+        <activity android:name=".Controller.CreatePoll" />
 
     </application>
 

@@ -56,14 +56,10 @@ public class ChooseElements extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         switch ( id ) {
-            case R.id.friends:
-                intent = new Intent (ChooseElements.this, Friends.class);
-                startActivity(intent);
-                return true;
             case R.id.create:
                 createPoll();
-                //intent = new Intent(ChooseElements.this, PollResults.class);
-                //startActivity(intent);
+                intent = new Intent(ChooseElements.this, PollResults.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected( item );
@@ -145,12 +141,12 @@ public class ChooseElements extends AppCompatActivity {
                     CheckBox checkBox = new CheckBox(ChooseElements.this);
                     checkBox.setId(newElement.getId());
                     checkBox.setText(newElement.getName());
-//            checkBox.setLayoutParams(buttonparam);
                     checkBox.setWidth(linearLayout.getWidth());
                     checks.add(checkBox);
                     linearLayout.addView(checkBox);
                     Toast.makeText(ChooseElements.this, "New Element Added", Toast.LENGTH_SHORT).show();
-
+                    finish();
+                    startActivity(getIntent());
                 } else {
                     Toast.makeText(ChooseElements.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
                 }
@@ -182,6 +178,7 @@ public class ChooseElements extends AppCompatActivity {
         newPoll.setPollID(Integer.toString(newList.size()));
         newPoll.setUsersNotVoted(user.getCurrentGroup().getMembers());
         newList.add(newPoll);
+        user.setCurrentPoll(newPoll);
         user.getCurrentGroup().setPolls(newList);
         //FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").child(Integer.toString(user.getGroups().indexOf(user.getCurrentGroup()))).child("polls").setValue(newList);
 
@@ -209,26 +206,14 @@ public class ChooseElements extends AppCompatActivity {
                                 //Group gr = new Group();
                                 //Fills model with Elements
                                 for(DataSnapshot s : snapp.child("notVoted").getChildren()){
-                                    newp.addUserVoted(s.getValue(String.class));
-
-                                    //newp.addElement(sn.getValue(Element.class));
+                                    newp.setHasNotVoted(s.getValue(String.class));
                                 }
                                 for(DataSnapshot sn : snapp.child("elements").getChildren()){
                                     Elist.add(sn.getValue(Element.class));
                                     Log.d("myTage",sn.child("name").getValue(String.class));
-                                    //newp.addElement(sn.getValue(Element.class));
                                 }
                                 newp.setElements(Elist);
-
-                                //gr.setName(snap.child("name").getValue(String.class));
-                                //gr.setGroupID(snap.child("groupID").getValue(String.class));
-                                //gr.setOwner(snapshot.child("owner").getValue(String.class));
-                                //user.getGroups().get(Integer.parseInt(snap.child("groupID").getValue(String.class))).addPoll();
-
-                                //i++;
                                 pList.add(newp);
-                                //Log.d("myTage",gr.getPolls().get(0).getElements().get(0).getName());
-
                             }
                             pList.add(newPoll);
                             String k = snap.getKey();
@@ -245,7 +230,6 @@ public class ChooseElements extends AppCompatActivity {
             });
 
         }
-
 
     }
 

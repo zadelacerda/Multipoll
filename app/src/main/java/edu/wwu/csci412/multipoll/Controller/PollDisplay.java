@@ -61,9 +61,7 @@ public class PollDisplay extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String TempListViewClickedValue = currentGroup.getPolls().get(position).getPollID();
                 user.setCurrentPoll(currentGroup.getPoll(TempListViewClickedValue));
-
                 Intent intent = new Intent(getActivity(), PollResults.class);
-                user.setCurrentPoll(currentGroup.getPoll(TempListViewClickedValue));
                 startActivity(intent);
 
             }

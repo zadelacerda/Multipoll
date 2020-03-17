@@ -131,7 +131,7 @@ public class Signin extends AppCompatActivity {
 
                                         //i++;
                                         gr.addPoll(newp);
-                                        Log.d("myTage",gr.getPolls().get(0).getElements().get(0).getName());
+//                                        Log.d("myTage",gr.getPolls().get(0).getElements().get(0).getName());
 
                                     }
                                     for(DataSnapshot snappy : snap.child("members").getChildren()){

@@ -106,21 +106,20 @@ public class Poll {
         return usersNotVoted;
     }
 
-    public void setUsersNotVoted(List<String> usersNotVoted) {
-        this.usersNotVoted = usersNotVoted;
+    public void setUsersNotVoted(List<String> u) {
+        usersNotVoted = u;
     }
     public void remUserVoted(String user){
-        this.usersNotVoted.remove(user);
+        usersNotVoted.remove(user);
     }
-    public void addUserVoted(String user){
-        this.usersNotVoted.add(user);
+    public void setHasNotVoted(String user){
+        usersNotVoted.add(user);
     }
     public Boolean hasVoted(String user){
         Boolean userFound = false;
-        //Log.d("null", this.usersNotVoted.get(0));
-        //for(String names : this.usersNotVoted){
-        for(int i = 0; i < this.usersNotVoted.size(); i++){
-            String names = this.usersNotVoted.get(i);
+
+        for(int i = 0; i < usersNotVoted.size(); i++){
+            String names = usersNotVoted.get(i);
 
             if(names.equals(user)){
                 userFound = true;

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
@@ -50,6 +52,10 @@ public class CreateGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_group);
 
+        /* Toolbar setup */
+        getSupportActionBar().setTitle("Create Group");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Connect XML with Java objects */
         search = findViewById(R.id.searchFriend);
@@ -71,26 +77,7 @@ public class CreateGroup extends AppCompatActivity {
 
         /* Search view setup */
         search.setHint("Enter Group Name");
-//        search.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                //(CreateGroup.this).arrayAdapter.getFilter().filter(s);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
 
-        /* List of elements for current category */
-//        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getFriends());
-//        LinearLayout.LayoutParams buttonparam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1.0f);
         for (int i = 0; i < user.getFriends().size(); i++) {
             String friend = user.getFriends().get(i);
             CheckBox checkBox = new CheckBox(this);
@@ -210,35 +197,11 @@ public class CreateGroup extends AppCompatActivity {
                         });
 
                     }
-
-//                    user.addGroup(newGroup);
-//                    List<Group> ng = user.getGroups();
-//                    databaseReference.child("users").child(user.getUserName()).child("userGroups").setValue(ng);
-
-                    //String newString = search.getText().toString();
-//                if () {
-//                    String newFriend = search.getText().toString();
-//                    user.getFriends().add(newFriend);
-//                    List<String> newList = user.getFriends();
-//                    databaseReference.child("users").child(user.getUserName()).child("userCategories").child(user.getCurrentCategory().getId()).child("elementList").setValue(newList); // @@@@@@@@@@@@@@@ ANDREW HEREE
-//                    arrayAdapter.notifyDataSetChanged();
-//                    LinearLayout linearLayout = findViewById(R.id.friendContainer);
-//                    CheckBox checkBox = new CheckBox(CreateGroup.this);
-//                    checkBox.setId(newList.size() - 1);
-//                    checkBox.setText(newFriend);
-////                  checkBox.setLayoutParams(buttonparam);
-//                    checkBox.setWidth(linearLayout.getWidth());
-//                    linearLayout.addView(checkBox);
-//                    Toast.makeText(CreateGroup.this, "New Friend Added", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent (CreateGroup.this, Groups.class);
-                    startActivity(intent);
                 }
 
             }
         });
     }
-
-
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {
