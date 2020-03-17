@@ -48,7 +48,7 @@ public class ChooseElements extends AppCompatActivity {
     List<CheckBox> checks = new ArrayList<>();
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.choose_menu, menu);
+        getMenuInflater().inflate(R.menu.choose_element_menu, menu);
         return true;
     }
 
@@ -56,10 +56,11 @@ public class ChooseElements extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         switch ( id ) {
-            case R.id.create:
+            case R.id.sendPoll:
                 createPoll();
                 intent = new Intent(ChooseElements.this, PollResults.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_sendpoll, R.anim.anim_enter_pollresults);
                 return true;
             default:
                 return super.onOptionsItemSelected( item );
@@ -109,7 +110,6 @@ public class ChooseElements extends AppCompatActivity {
 
         /* List of elements for current category */
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCurrentCategory().getElements());
-//        LinearLayout.LayoutParams buttonparam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1.0f);
         checks.clear();
         for (int i = 0; i < user.getCurrentCategory().getElements().size(); i++) {
             Element element = arrayAdapter.getItem(i);
@@ -118,7 +118,6 @@ public class ChooseElements extends AppCompatActivity {
             checkBox.setText(element.getName());
 
             checks.add(checkBox);
-//            checkBox.setLayoutParams(buttonparam);
             checkBox.setWidth(linearLayout.getWidth());
             linearLayout.addView(checkBox);
         }
@@ -154,11 +153,11 @@ public class ChooseElements extends AppCompatActivity {
         });
     }
 
-
+    //Creating a new Poll
     public void createPoll(){
-        //List<Element> pollElements = new ArrayList<>();
         final Poll newPoll = new Poll(user.getUserName(), Controller.getpName());
             int ind = 0;
+            //Find which elements are checked
         for (int i = 0; i < checks.size(); i++) {
             if(checks.get(i).isChecked()){
 
@@ -167,12 +166,8 @@ public class ChooseElements extends AppCompatActivity {
                 ind++;
             }
         }
-//        for (int j = 0; j < user.getCurrentGroup().getMembers().size(); j++){
-//            newPoll.addUserVoted(user.getCurrentGroup().getMembers().get(j));
-//
-//        }
 
-        //newPoll.setElements(pollElements);
+
         newPoll.setTarget(user.getCurrentGroup().getGroupID());
         List<Poll> newList = user.getCurrentGroup().getPolls();
         newPoll.setPollID(Integer.toString(newList.size()));
@@ -180,18 +175,18 @@ public class ChooseElements extends AppCompatActivity {
         newList.add(newPoll);
         user.setCurrentPoll(newPoll);
         user.getCurrentGroup().setPolls(newList);
-        //FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").child(Integer.toString(user.getGroups().indexOf(user.getCurrentGroup()))).child("polls").setValue(newList);
-
+        //Loop through all the members in the group, adding the poll for all of them
         for (int i = 0; i < user.getCurrentGroup().getMembers().size(); i++) {
             FirebaseDatabase.getInstance().getReference().child("users").child(user.getCurrentGroup().getMembers().get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String nme = dataSnapshot.child("userName").getValue(String.class);
-
+                    //Go through groups
                     for (DataSnapshot snap : dataSnapshot.child("userGroups").getChildren()) {
 
                         if (snap.child("groupID").getValue(String.class).equals(user.getCurrentGroup().getGroupID())){
                             List<Poll> pList = new ArrayList<>();
+                            //Go through Polls
                             for( DataSnapshot snapp : snap.child("polls").getChildren()){
                                 Poll newp = new Poll();
                                 newp.setOwner(snapp.child("owner").getValue(String.class));
@@ -200,14 +195,12 @@ public class ChooseElements extends AppCompatActivity {
                                 newp.setTarget(snapp.child("target").getValue(String.class));
                                 newp.setPollID(snapp.child("pollID").getValue(String.class));
 
-                                //gr.addPoll(newp);
-                                //Group gr = new Group();
                                 List<Element> Elist = new ArrayList<>();
-                                //Group gr = new Group();
-                                //Fills model with Elements
+                                //Populate Poll's NotVoted arrays
                                 for(DataSnapshot s : snapp.child("notVoted").getChildren()){
                                     newp.setHasNotVoted(s.getValue(String.class));
                                 }
+                                //Populate Poll's Element list
                                 for(DataSnapshot sn : snapp.child("elements").getChildren()){
                                     Elist.add(sn.getValue(Element.class));
                                     Log.d("myTage",sn.child("name").getValue(String.class));

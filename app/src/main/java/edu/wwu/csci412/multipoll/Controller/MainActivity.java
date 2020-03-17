@@ -21,8 +21,6 @@ import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.R;
 
-//import static edu.wwu.csci412.multipoll.Controller.MapsActivity.mMap;
-
 public class MainActivity extends AppCompatActivity {
     public static Controller controller;
     public static DatabaseController dbcontroller;
@@ -145,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         Intent newv;
+        //Voice Commands
         if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
@@ -185,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 finishAffinity();
                 System.exit(0);
             }
-            // Do something with spokenText
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

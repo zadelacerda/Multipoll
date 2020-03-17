@@ -57,7 +57,6 @@ public class NewFriend extends AppCompatActivity {
                     }
                     if(existingFr == 0 && userFound == 1){
                         List<String> nf = currentUser.getFriends();
-                        //nf.add(usern);
                         FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUserName()).child("friends").setValue(nf);
                         Intent intent = new Intent (NewFriend.this, Friends.class);
                         startActivity(intent);

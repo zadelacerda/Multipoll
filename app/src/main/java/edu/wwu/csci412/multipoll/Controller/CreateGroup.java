@@ -71,20 +71,18 @@ public class CreateGroup extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
         // Toolbar setup
-        //getSupportActionBar().setTitle(user.getCurrentCategory().getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search view setup */
         search.setHint("Enter Group Name");
-
+        //Create checkboxes for Friends list
         for (int i = 0; i < user.getFriends().size(); i++) {
             String friend = user.getFriends().get(i);
             CheckBox checkBox = new CheckBox(this);
             checkBox.setId(i);
             checkBox.setText(friend);
             checks.add(checkBox);
-//            checkBox.setLayoutParams(buttonparam);
             checkBox.setWidth(linearLayout.getWidth());
             linearLayout.addView(checkBox);
         }
@@ -96,6 +94,7 @@ public class CreateGroup extends AppCompatActivity {
 
                 EditText e = (EditText) findViewById(R.id.searchFriend);
                 String name = e.getText().toString();
+                //If the bar isn't blank, create new group with selected members
                 if(!search.getText().toString().equals("")) {
 
 
@@ -114,11 +113,8 @@ public class CreateGroup extends AppCompatActivity {
 
                         }
                     }
-//                    for (int i = 0; i < newGroup.getMembers().size(); i++){
-//                        databaseReference.child("users").child(newGroup.getMembers().get(i)).child("userGroups").push().setValue(newGroup);
-//
-//                    }
 
+                    //Create the new group for each member in the group
                     for (int i = 0; i < newGroup.getMembers().size(); i++) {
                         FirebaseDatabase.getInstance().getReference().child("users").child(newGroup.getMembers().get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -126,11 +122,12 @@ public class CreateGroup extends AppCompatActivity {
                                 List<Group> gList = new ArrayList<>();
                                 String un = dataSnapshot.child("userName").getValue(String.class);
                                 Log.d("myTag", un);
+                                //Re-Add Groups
                                 for (DataSnapshot snap : dataSnapshot.child("userGroups").getChildren()) {
                                     Group gr = new Group();
                                     gr.setGroupID(snap.child("groupID").getValue(String.class));
                                     gr.setName(snap.child("name").getValue(String.class));
-                                    //List<Poll> Plist = new ArrayList<>();
+                                    //Re-Add Polls
                                     for (DataSnapshot snapp : snap.child("polls").getChildren()) {
                                         Poll newp = new Poll();
                                         newp.setOwner(snapp.child("owner").getValue(String.class));
@@ -138,56 +135,38 @@ public class CreateGroup extends AppCompatActivity {
                                         newp.setStatus(snapp.child("status").getValue(Boolean.class));
                                         newp.setTarget(snapp.child("target").getValue(String.class));
                                         newp.setPollID(snapp.child("pollID").getValue(String.class));
-                                        //gr.addPoll(newp);
-                                        //Group gr = new Group();
                                         List<Element> Elist = new ArrayList<>();
-                                        //Group gr = new Group();
                                         //Fills model with Elements
                                         for (DataSnapshot sn : snapp.child("elements").getChildren()) {
                                             Elist.add(sn.getValue(Element.class));
                                             Log.d("myTage", sn.child("name").getValue(String.class));
-                                            //newp.addElement(sn.getValue(Element.class));
                                         }
                                         newp.setElements(Elist);
 
-                                        //gr.setName(snap.child("name").getValue(String.class));
-                                        //gr.setGroupID(snap.child("groupID").getValue(String.class));
-                                        //gr.setOwner(snapshot.child("owner").getValue(String.class));
-                                        //user.getGroups().get(Integer.parseInt(snap.child("groupID").getValue(String.class))).addPoll();
-
-                                        //i++;
                                         gr.addPoll(newp);
-                                        //gr.setMembers(newGroup.getMembers());
-                                        //Log.d("myTage",gr.getPolls().get(0).getElements().get(0).getName());
+
 
                                     }
-
-
+                                    //Add all the members
                                     for( DataSnapshot mems : snap.child("members").getChildren()){
                                         gr.addMember(mems.getValue(String.class));
 
                                     }
 
-
-
-
-
-                                    //user.addGroup(snap.getValue(Group.class));
-//                                user.addGroup(gr);
                                     gList.add(gr);
+                                    //Add to model if the member is the current user
                                     if(un.equals(user.getUserName())){
                                         user.addGroup(gr);
                                     }
                                 }
                                 gList.add(newGroup);
+                                //Add to members database user
                                 if(un.equals(user.getUserName())){
 
                                     user.setUserGroups(gList);
-                                    Log.d("tag", "Test that here"); //Getting here
                                     databaseReference.child("users").child(user.getUserName()).child("userGroups").setValue(gList);
                                 }
                                 FirebaseDatabase.getInstance().getReference().child("users").child(un).child("userGroups").setValue(gList);
-                                //FirebaseDatabase.getInstance().getReference().child("users").child().child("userGroups").setValue(gList);
                             }
 
                             @Override

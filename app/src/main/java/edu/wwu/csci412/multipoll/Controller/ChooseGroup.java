@@ -91,7 +91,7 @@ public class ChooseGroup extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.choose_group_menu, menu);
         return true;
     }
-
+    //Menu
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent intent;

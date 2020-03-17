@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item android:id="@+id/addPoll"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/baseline_add_circle_black_18dp"
         android:title="Add Poll"
         app:showAsAction="ifRoom" />
 

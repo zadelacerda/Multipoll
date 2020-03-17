@@ -92,7 +92,7 @@ public class Signin extends AppCompatActivity {
                                     Group gr = new Group();
                                     gr.setGroupID(snap.child("groupID").getValue(String.class));
                                     gr.setName(snap.child("name").getValue(String.class));
-                                    //List<Poll> Plist = new ArrayList<>();
+                                    //Go through polls
                                     for( DataSnapshot snapp : snap.child("polls").getChildren()){
                                         Poll newp = new Poll();
                                         newp.setOwner(snapp.child("owner").getValue(String.class));
@@ -100,18 +100,16 @@ public class Signin extends AppCompatActivity {
                                         newp.setStatus(snapp.child("status").getValue(Boolean.class));
                                         newp.setTarget(snapp.child("target").getValue(String.class));
                                         newp.setPollID(snapp.child("pollID").getValue(String.class));
-                                        //gr.addPoll(newp);
-                                        //Group gr = new Group();
                                         List<Element> Elist = new ArrayList<>();
-                                        //Group gr = new Group();
                                         //Fills model with Elements
                                         List<String> voInit = new ArrayList<>();
+                                        //Add NotVoted list to Polls
                                         for(DataSnapshot s : snapp.child("usersNotVoted").getChildren()){
                                             voInit.add(s.getValue(String.class));
 
-                                            //newp.addElement(sn.getValue(Element.class));
                                         }
                                         newp.setUsersNotVoted(voInit);
+                                        //Add element list to Polls
                                         for(DataSnapshot sn : snapp.child("elements").getChildren()){
                                             Element El = new Element(sn.child("name").getValue(String.class), sn.child("id").getValue(int.class));
                                             //Log.d("test", Integer.toString(sn.child("voteCounter").getValue(int.class)));
@@ -120,26 +118,19 @@ public class Signin extends AppCompatActivity {
 
                                             Elist.add(El);
                                             Log.d("myTage",sn.child("name").getValue(String.class));
-                                            //newp.addElement(sn.getValue(Element.class));
                                         }
                                         newp.setElements(Elist);
 
-                                        //gr.setName(snap.child("name").getValue(String.class));
-                                        //gr.setGroupID(snap.child("groupID").getValue(String.class));
-                                        //gr.setOwner(snapshot.child("owner").getValue(String.class));
-                                        //user.getGroups().get(Integer.parseInt(snap.child("groupID").getValue(String.class))).addPoll();
 
-                                        //i++;
                                         gr.addPoll(newp);
-//                                        Log.d("myTage",gr.getPolls().get(0).getElements().get(0).getName());
 
                                     }
+                                    //Add members to groups
                                     for(DataSnapshot snappy : snap.child("members").getChildren()){
                                         gr.addMember(snappy.getValue(String.class));
                                     }
 
 
-                                    //user.addGroup(snap.getValue(Group.class));
                                     user.addGroup(gr);
 
                                 }
@@ -155,7 +146,6 @@ public class Signin extends AppCompatActivity {
                                     Category cat = new Category();
                                     //Fills model with Elements
                                     for(DataSnapshot sn : snap.child("elements").getChildren()){
-                                        //Elist.add(sn.getValue(Element.class));
                                         cat.addElement(sn.getValue(Element.class));
                                     }
                                     cat.setName(snap.child("name").getValue(String.class));
@@ -170,7 +160,7 @@ public class Signin extends AppCompatActivity {
 
                             }
                         }
-                        //If user is there
+                        //If user exists in database
                         if(userTrue == 1){
 
 

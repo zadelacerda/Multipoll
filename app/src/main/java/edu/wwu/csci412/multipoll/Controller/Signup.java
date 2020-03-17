@@ -47,7 +47,6 @@ public class Signup extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     /*Onclick method to create a new authentication account and add profile to database*/
@@ -58,7 +57,6 @@ public class Signup extends AppCompatActivity {
         EditText last = (EditText) findViewById(R.id.editlast);
         EditText textp = (EditText) findViewById(R.id.editpass);
         EditText textu = (EditText) findViewById(R.id.edituser);
-        //final String email = (String) texte.getText().toString();
         final String username = (String) textu.getText().toString();
         final String pass = (String) textp.getText().toString();
         final String fst = (String) first.getText().toString();

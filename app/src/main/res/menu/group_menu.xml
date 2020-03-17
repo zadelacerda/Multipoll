@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item android:id="@+id/addGroup"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/baseline_add_circle_black_18dp"
         android:title="Add Group"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/friends"
-        android:icon="@drawable/friends"
+        android:icon="@drawable/baseline_group_add_black_18dp"
         android:title="Friends"
         app:showAsAction="ifRoom"/>
 

@@ -21,7 +21,6 @@ public class DatabaseController {
     public void DatabaseController() {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseRef = mFirebaseDatabase.getReference();
-        //userRef = mFirebaseDatabase.getInstance().getReference().child("users");
         groupRef = mFirebaseDatabase.getReference("groups");
     }
 
@@ -29,7 +28,6 @@ public class DatabaseController {
     private String pass;
     public User getDataByUser(final String username) {
 
-        //Query q = FirebaseDatabase.getInstance().getReference().child("users").equalTo(username);
         FirebaseDatabase.getInstance().getReference().child("users").child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

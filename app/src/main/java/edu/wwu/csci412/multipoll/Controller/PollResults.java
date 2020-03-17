@@ -122,7 +122,7 @@ public class PollResults extends AppCompatActivity {
             rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-
+                    //Find the group index for each user in the group
                     pollElements.get(rg.getCheckedRadioButtonId()).addVote();
                     user.getCurrentPoll().remUserVoted(user.getUserName());
                     int b = 0;
@@ -131,25 +131,29 @@ public class PollResults extends AppCompatActivity {
                             b = j;
                         }
                     }
+                    //Update the UsersNotVoted List
                     FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups")
                             .child(Integer.toString(b)).child("polls").child(user.getCurrentPoll().getPollID()).child("usersNotVoted")
                             .setValue(user.getCurrentPoll().getUsersNotVoted());
-
+                    //For each member in the group
                     for (int i = 0; i < user.getCurrentGroup().getMembers().size(); i++) {
                         FirebaseDatabase.getInstance().getReference().child("users").child(user.getCurrentGroup().getMembers().get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String nme = dataSnapshot.child("userName").getValue(String.class);
-
+                                //Update their groups
                                 for (DataSnapshot snap : dataSnapshot.child("userGroups").getChildren()) {
-
+                                    //If correct group
                                     if (snap.child("groupID").getValue(String.class).equals(user.getCurrentGroup().getGroupID())){
                                         List<Poll> pList = new ArrayList<>();
+                                        //For all polls
                                         for( DataSnapshot snapp : snap.child("polls").getChildren()){
+                                            //Double check against poll name and target group
                                             if(snapp.child("name").getValue(String.class).equals(user.getCurrentPoll().getName())){
                                                 if(snapp.child("target").getValue(String.class).equals(user.getCurrentGroup().getGroupID())){
                                                     int vc = snapp.child("elements").child(Integer.toString(rg.getCheckedRadioButtonId())).child("voteCounter").getValue(int.class);
                                                     int vcInt = vc;
+                                                    //Add vote to everyones database
                                                     FirebaseDatabase.getInstance().getReference().child("users").child(nme)
                                                             .child("userGroups").child(snap.getKey()).child("polls")
                                                             .child(snapp.getKey()).child("elements").child(Integer.toString(rg.getCheckedRadioButtonId())).child("voteCounter")
@@ -175,8 +179,7 @@ public class PollResults extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups")
                                 .child(Integer.toString(b)).child("polls").child(user.getCurrentPoll().getPollID()).child("elements")
                                 .child(Integer.toString(rg.getCheckedRadioButtonId())).child("voteCounter").setValue(user.getCurrentPoll().getElements().get(rg.getCheckedRadioButtonId()).getVoteCounter());
-
-//                    FirebaseDatabase.getInstance().getReference()
+                    //Change the visibility of the other radiobuttons
                     for (int i = 0; i < pollElements.size(); i++) {
                         if (i != (rg.getCheckedRadioButtonId())) {
                             rg.getChildAt(i).setVisibility(View.GONE);
