@@ -7,11 +7,13 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:id="@+id/mainLayout" >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="379dp"
+        android:id="@+id/Test"
+        android:layout_width="match_parent"
         android:layout_height="391dp">
 
         <TextView
@@ -62,27 +64,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/createPoll"
             app:layout_constraintTop_toBottomOf="@+id/multipoll_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/notification_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/startGreen"
         android:orientation="vertical">
-
-        <View
-            android:id="@+id/notification_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:background="@color/startGreen" />
-
         <TextView
-            android:id="@+id/notification_text"
+            android:id="@+id/newestPoll_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Notifcations"
+            android:gravity="center"
+            android:text="Newest Poll"
             android:visibility="visible" />
+        <Button
+            android:id="@+id/recentGroup"
+            android:layout_width="match_parent"
+            android:background="@color/DarkCyan"
+            android:layout_height="wrap_content" />
+        <!--        </View>-->
+
+        <TextView
+            android:id="@+id/newestGroup_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Newest Group"
+
+            android:visibility="visible" />
+        <Button
+            android:id="@+id/recentPoll"
+            android:layout_width="match_parent"
+            android:background="@color/DarkCyan"
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </LinearLayout>

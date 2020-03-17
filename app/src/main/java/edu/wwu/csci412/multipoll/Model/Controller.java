@@ -5,24 +5,24 @@ import edu.wwu.csci412.multipoll.Controller.DatabaseController;
 public class Controller {
 
     private static User user = new User(0);
-
-    private Group roommates = new Group("Roommates");
-    private Group coworkers = new Group("Co-workers");
-    private Category restaurants =  new Category("Restaurants");
-    private Category movies = new Category("Movies");
-    //privawate Category date_ideas = new Category("Date Ideas");
-
-    private Poll birthday = new Poll(user, "Ben's Birthday");
-    private Poll meeting = new Poll(user, "Meeting");
-    private Poll dinner = new Poll(user, "Family Dinner");
-
-    private Element option1 = new Element("Laser Tag", 0);
-    private Element option2 = new Element("Movie Night", 1);
-    private Element option3 = new Element("Arcade", 2);
-
-    private Element r1 = new Element("Mambo Italiano", 0);
-    private Element r2 = new Element("D'Annas", 1);
-    private Element r3 = new Element("La Fiamma", 2);
+    private static String pName;
+//    private Group roommates = new Group("Roommates");
+//    private Group coworkers = new Group("Co-workers");
+//    private Category restaurants =  new Category("Restaurants");
+//    private Category movies = new Category("Movies");
+//    //privawate Category date_ideas = new Category("Date Ideas");
+//
+//    private Poll birthday = new Poll(user, "Ben's Birthday");
+//    private Poll meeting = new Poll(user, "Meeting");
+//    private Poll dinner = new Poll(user, "Family Dinner");
+//
+//    private Element option1 = new Element("Laser Tag", 0);
+//    private Element option2 = new Element("Movie Night", 1);
+//    private Element option3 = new Element("Arcade", 2);
+//
+//    private Element r1 = new Element("Mambo Italiano", 0);
+//    private Element r2 = new Element("D'Annas", 1);
+//    private Element r3 = new Element("La Fiamma", 2);
 
 
     public Controller() {
@@ -57,5 +57,13 @@ public class Controller {
     }
     public void setUser(User us){
         user = us;
+    }
+
+    public static String getpName() {
+        return pName;
+    }
+
+    public static void setpName(String pName) {
+        Controller.pName = pName;
     }
 }

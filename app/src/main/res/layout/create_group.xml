@@ -14,7 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="10dp" />
+        tools:layout_editor_absoluteY="10dp"
+        android:lines="1"
+        android:maxLines="1"
+        android:inputType="text"/>
+
 
 
     <LinearLayout
@@ -36,5 +40,5 @@
         app:srcCompat="@android:drawable/ic_input_add"
         app:elevation="8dp"/>
 
-
 </RelativeLayout>
+

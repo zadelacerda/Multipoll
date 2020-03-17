@@ -19,12 +19,16 @@
             android:id="@+id/firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20dp"
             android:layout_weight=".5" />
 
         <TextView
             android:id="@+id/lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20dp"
             android:layout_weight=".5" />
     </LinearLayout>
 
@@ -33,11 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/deleteFriend"
         android:layout_width="match_parent"
+        android:text="Delete Friend"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent" />

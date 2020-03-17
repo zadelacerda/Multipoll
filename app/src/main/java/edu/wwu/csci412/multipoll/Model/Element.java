@@ -66,4 +66,15 @@ public class Element {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void addVote(){
+        voteCounter++;
+    }
+
+    public void remVote(){
+        voteCounter--;
+    }
+
+
+
 }

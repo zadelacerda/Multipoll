@@ -8,6 +8,7 @@ import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.Element;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.User;
+import edu.wwu.csci412.multipoll.Model.Poll;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
@@ -85,10 +86,52 @@ public class Signin extends AppCompatActivity {
                                 user.getGroups().clear();
                                 user.getFriends().clear();
                                 user.getUserCategories().clear();
+
                                 //Fills model with groups
                                 for( DataSnapshot snap : snapshot.child("userGroups").getChildren()){
+                                    Group gr = new Group();
+                                    gr.setGroupID(snap.child("groupID").getValue(String.class));
+                                    gr.setName(snap.child("name").getValue(String.class));
+                                    //Go through polls
+                                    for( DataSnapshot snapp : snap.child("polls").getChildren()){
+                                        Poll newp = new Poll();
+                                        newp.setOwner(snapp.child("owner").getValue(String.class));
+                                        newp.setName(snapp.child("name").getValue(String.class));
+                                        newp.setStatus(snapp.child("status").getValue(Boolean.class));
+                                        newp.setTarget(snapp.child("target").getValue(String.class));
+                                        newp.setPollID(snapp.child("pollID").getValue(String.class));
+                                        List<Element> Elist = new ArrayList<>();
+                                        //Fills model with Elements
+                                        List<String> voInit = new ArrayList<>();
+                                        //Add NotVoted list to Polls
+                                        for(DataSnapshot s : snapp.child("usersNotVoted").getChildren()){
+                                            voInit.add(s.getValue(String.class));
 
-                                    user.addGroup(snap.getValue(Group.class));
+                                        }
+                                        newp.setUsersNotVoted(voInit);
+                                        //Add element list to Polls
+                                        for(DataSnapshot sn : snapp.child("elements").getChildren()){
+                                            Element El = new Element(sn.child("name").getValue(String.class), sn.child("id").getValue(int.class));
+                                            //Log.d("test", Integer.toString(sn.child("voteCounter").getValue(int.class)));
+                                            El.setVoteCounter((sn.child("voteCounter").getValue(int.class)));
+
+
+                                            Elist.add(El);
+                                            Log.d("myTage",sn.child("name").getValue(String.class));
+                                        }
+                                        newp.setElements(Elist);
+
+
+                                        gr.addPoll(newp);
+
+                                    }
+                                    //Add members to groups
+                                    for(DataSnapshot snappy : snap.child("members").getChildren()){
+                                        gr.addMember(snappy.getValue(String.class));
+                                    }
+
+
+                                    user.addGroup(gr);
 
                                 }
                                 //Fills model with friends
@@ -102,8 +145,7 @@ public class Signin extends AppCompatActivity {
                                 for( DataSnapshot snap : snapshot.child("userCategories").getChildren()){
                                     Category cat = new Category();
                                     //Fills model with Elements
-                                    for(DataSnapshot sn : snap.child("elementList").getChildren()){
-                                        //Elist.add(sn.getValue(Element.class));
+                                    for(DataSnapshot sn : snap.child("elements").getChildren()){
                                         cat.addElement(sn.getValue(Element.class));
                                     }
                                     cat.setName(snap.child("name").getValue(String.class));
@@ -114,9 +156,11 @@ public class Signin extends AppCompatActivity {
                                     i++;
 
                                 }
+                                i = 0;
+
                             }
                         }
-                        //If user is there
+                        //If user exists in database
                         if(userTrue == 1){
 
 
@@ -125,6 +169,7 @@ public class Signin extends AppCompatActivity {
                             userTrue = 0;
                             Intent intent = new Intent(Signin.this, MainActivity.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.anim_enter_main, R.anim.anim_exit_signin);
                             return;
                         }
 

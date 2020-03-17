@@ -3,15 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/groupContainer"
     android:orientation="vertical"
     android:background="@drawable/gradient">
 
     <EditText
-        android:id="@+id/searchGroup"
+        android:id="@+id/createPoll"
         android:layout_width="match_parent"
-        android:hint="Enter New Poll Name"
         android:layout_height="75dp"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="10dp"
@@ -19,18 +17,12 @@
         android:maxLines="1"
         android:inputType="text" />
 
-    <ListView
-        android:id="@+id/groupList"
+    <Button
+        android:id="@+id/createNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchGroup"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
-        android:scrollbars="vertical">
-    </ListView>
-
+        android:text="Configure Poll"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/createPoll" />
 
 </RelativeLayout>

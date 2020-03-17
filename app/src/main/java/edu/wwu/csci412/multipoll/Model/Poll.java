@@ -1,5 +1,7 @@
 package edu.wwu.csci412.multipoll.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +14,20 @@ public class Poll {
     private String pollID; // poll ID
     private boolean status; // status of poll (active - true/ inactive - false)
     private String category; // type of category
-    private ArrayList<Element> elements; // list of elements to vote on
+    private List<Element> elements; // list of elements to vote on
     private String target; // group_id for this poll
+    private List<String> usersNotVoted;
 
-    public Poll(User u, String n) {
+    public Poll(){
+
+    }
+
+    public Poll(String u, String n) {
         name = n;
+        owner = u;
         status = true;
         elements = new ArrayList<>();
+        usersNotVoted = new ArrayList<>();
     }
 
     public String getName() {
@@ -53,7 +62,7 @@ public class Poll {
         category = c;
     }
 
-    public List<String> listElements(ArrayList<Element> elements) {
+    public List<String> listElements(List<Element> elements) {
         List<String> elementNames = new ArrayList<>();
         for (int i=0; i<elements.size(); i++) {
             elementNames.add(elements.get(i).getName());
@@ -61,11 +70,11 @@ public class Poll {
         return elementNames;
     }
 
-    public ArrayList<Element> getElements() {
+    public List<Element> getElements() {
         return elements;
     }
 
-    public void setElements(ArrayList<Element> e) {
+    public void setElements(List<Element> e) {
         elements = e;
     }
 
@@ -81,4 +90,46 @@ public class Poll {
         target = t;
     }
 
+    public String getPollID() {
+        return pollID;
+    }
+
+    public void setPollID(String pollID) {
+        this.pollID = pollID;
+    }
+
+    public List<Element> getElementList() {
+        return elements;
+    }
+
+    public List<String> getUsersNotVoted() {
+        return usersNotVoted;
+    }
+
+    public void setUsersNotVoted(List<String> u) {
+        usersNotVoted = u;
+    }
+    public void remUserVoted(String user){
+        usersNotVoted.remove(user);
+    }
+    public void setHasNotVoted(String user){
+        usersNotVoted.add(user);
+    }
+    public Boolean hasVoted(String user){
+        Boolean userFound = false;
+
+        for(int i = 0; i < usersNotVoted.size(); i++){
+            String names = usersNotVoted.get(i);
+
+            if(names.equals(user)){
+                userFound = true;
+            }
+        }
+        if(userFound){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
