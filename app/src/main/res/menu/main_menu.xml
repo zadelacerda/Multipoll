@@ -2,8 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
+    <item android:id="@+id/Voice"
+        android:icon="@drawable/baseline_mic_black_18dp"
+        android:title="Voice"
+        android:iconTint="@color/Black"
+        app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/logout"
-        android:icon="@drawable/friends"
+        android:icon="@drawable/baseline_keyboard_tab_black_18dp"
         android:title="Logout"
         app:showAsAction="ifRoom"/>
 

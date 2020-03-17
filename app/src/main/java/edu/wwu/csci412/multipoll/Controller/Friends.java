@@ -64,9 +64,8 @@ public class Friends extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
+                user.setCurrentFriend(user.getFriends().get(position));
                 Intent intent = new Intent (Friends.this, FriendSelected.class);
-                //user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
                 startActivity(intent);
             }
         });
@@ -79,18 +78,27 @@ public class Friends extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     int userFound = 0;
                     int existingFr = 0;
-                    //EditText newfr = (EditText) findViewById(R.id.edituser);
                     String usern = (String) addFriend.getText().toString();
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User currentUser = MainActivity.getController().getUser();
+                        //Go through users in database
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
                             String un = ds.child("userName").getValue(String.class);
+                            //If the input is a real username
+
                             if (un.equals(usern)) {
                                 userFound = 1;
-                                if(!currentUser.getFriends().contains(usern)) {
-                                    currentUser.addFriend(usern);
+                                //If not already friends
+                                if(!usern.equals(currentUser.getUserName())) {
+                                    if (!currentUser.getFriends().contains(usern)) {
+                                        currentUser.addFriend(usern);
+                                        Toast.makeText(Friends.this, "New Friend Added", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(Friends.this, "Invalid Username", Toast.LENGTH_SHORT).show();
+
+                                    }
                                 }
 
                             }
@@ -101,13 +109,14 @@ public class Friends extends AppCompatActivity {
                                     }
                                 }
                             }
+                            if(usern.equals(currentUser.getUserName())){
+                                existingFr = 1;
+                            }
                             if(existingFr == 0 && userFound == 1){
                                 List<String> nf = currentUser.getFriends();
                                 Toast.makeText( Friends.this, "Added" + usern, Toast.LENGTH_SHORT).show( );
-                                //nf.add(usern);
                                 FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUserName()).child("friends").setValue(nf);
-//                                Intent intent = new Intent (NewFriend.this, Friends.class);
-//                                startActivity(intent);
+
                             }
                         }
                         userFound = 0;

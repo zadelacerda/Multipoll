@@ -114,7 +114,8 @@ public class ChooseCategory  extends AppCompatActivity {
                     ListView list = findViewById(R.id.categoryList);
                     list.setAdapter(arrayAdapter);
                     Toast.makeText(ChooseCategory.this, "New Category Added", Toast.LENGTH_SHORT).show();
-//                    updateView();
+                    finish();
+                    startActivity(getIntent());
                 } else {
                     Toast.makeText(ChooseCategory.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
                 }

@@ -54,6 +54,8 @@ public class Groups extends AppCompatActivity {
         });
     }
 
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.group_menu, menu);
         return true;
@@ -67,7 +69,7 @@ public class Groups extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.addGroup:
-                intent = new Intent(Groups.this, NewGroup.class);
+                intent = new Intent(Groups.this, CreateGroup.class);
                 startActivity(intent);
                 return true;
             default:
@@ -76,6 +78,7 @@ public class Groups extends AppCompatActivity {
     }
 
     @Override public boolean onSupportNavigateUp() {
-        onBackPressed();
+        Intent intent = new Intent(Groups.this, MainActivity.class);
+        startActivity(intent);
         return true; }
 }
