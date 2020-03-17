@@ -10,13 +10,19 @@ public class Element {
     private String description; //description of element
     private int voteCounter; //vote counter for element
 
-    public Element(String n){
-         name = n;
-         voteCounter = 0;
+    public Element(){
+
     }
 
-    public Element(String n, String d){
+    public Element(String n, int newID){
+         name = n;
+         voteCounter = 0;
+         id = newID;
+    }
+
+    public Element(String n, int newID, String d){
         name = n;
+        id = newID;
         description = d;
         voteCounter = 0;
     }
@@ -60,4 +66,15 @@ public class Element {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void addVote(){
+        voteCounter++;
+    }
+
+    public void remVote(){
+        voteCounter--;
+    }
+
+
+
 }

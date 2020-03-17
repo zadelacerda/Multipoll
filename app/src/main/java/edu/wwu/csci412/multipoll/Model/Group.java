@@ -6,9 +6,12 @@ import java.util.List;
 public class Group {
     private String name;
     private String groupID;
-    private ArrayList<String> members;
-    private ArrayList<Poll> polls;
-
+    private List<String> members;
+    private List<Poll> polls;
+    public Group(){
+        members = new ArrayList<>();
+        polls = new ArrayList<>();
+    }
     public Group(String n) {
         name = n;
         members = new ArrayList<>();
@@ -24,10 +27,10 @@ public class Group {
         return groupID;
     }
 
-    public ArrayList<String> getMembers() {
+    public List<String> getMembers() {
         return members;
     }
-    public ArrayList<Poll> getPolls() {
+    public List<Poll> getPolls() {
         return polls;
     }
     public List<String> listPolls() {
@@ -43,7 +46,7 @@ public class Group {
         int i = -1;
         while (!found) {
             i++;
-            if (polls.get(i).getName().equals(p)) {
+            if (polls.get(i).getPollID().equals(p)) {
                 found = true;
             }
         }
@@ -57,7 +60,21 @@ public class Group {
         polls.add(p);
     }
 
+    public void setMembers(List<String> members) {
+        this.members = members;
+    }
+
+
+
     public void setGroupID(String groupID) {
         this.groupID = groupID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPolls(List<Poll> polls) {
+        this.polls = polls;
     }
 }

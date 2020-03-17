@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -35,6 +36,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
+import android.content.pm.PackageManager;
+import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {

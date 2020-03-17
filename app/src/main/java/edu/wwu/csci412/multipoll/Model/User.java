@@ -20,8 +20,13 @@ public class User {
     private static Poll currentPoll;
     private static Category currentCategory;
     private static String currentElement;
+    private static String currentFriend;
 
-    public User() {
+    public User(){
+
+    }
+
+    public User(int b) {
 
         setFirstName("");
         setLastName("");
@@ -84,6 +89,32 @@ public class User {
     public List<Group> getGroups() {
         return userGroups;
     }
+
+    public static String getUserID() {
+        return userID;
+    }
+
+    public static List<String> getFriends() {
+        return friends;
+    }
+
+    public static void setFriends(List<String> friends) {
+        User.friends = friends;
+    }
+    public void addFriend(String name){friends.add(name);}
+
+    public static void setUserCategories(List<Category> userCategories) {
+        User.userCategories = userCategories;
+    }
+
+    public static List<Group> getUserGroups() {
+        return userGroups;
+    }
+
+    public static void setUserGroups(List<Group> userGroups) {
+        User.userGroups = userGroups;
+    }
+
     public Group getGroup(String g) {
         boolean found = false;
         int i = -1;
@@ -107,6 +138,11 @@ public class User {
     public Category getCurrentCategory() {
         return currentCategory;
     }
+
+    public static String getCurrentFriend() {
+        return currentFriend;
+    }
+
     public Category getCategory(String c) {
         boolean found = false;
         int i = -1;
@@ -131,6 +167,11 @@ public class User {
     public void setCurrentPoll(Poll p) {
         currentPoll = p;
     }
+
+    public static void setCurrentFriend(String currentFriend) {
+        User.currentFriend = currentFriend;
+    }
+
     public void addUserCategory(Category cat) {
         userCategories.add(cat);
     }

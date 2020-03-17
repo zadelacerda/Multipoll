@@ -17,8 +17,12 @@ import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 import edu.wwu.csci412.multipoll.Model.Category;
 import edu.wwu.csci412.multipoll.Model.Controller;
@@ -32,6 +36,8 @@ public class ChooseGroup extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
+    String pName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +45,7 @@ public class ChooseGroup extends AppCompatActivity {
 
         /* Connect XML with Java objects */
         ListView list = findViewById(R.id.groupList);
-        EditText search = findViewById(R.id.searchGroup);
+        final EditText search = findViewById(R.id.searchGroup);
         FloatingActionButton fab = findViewById(R.id.addGroup);
 
         /* Fake Database */
@@ -52,22 +58,8 @@ public class ChooseGroup extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search bar setup */
-        search.setHint("Search Groups");
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+        search.setHint("Enter New Poll Name");
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (ChooseGroup.this).arrayAdapter.getFilter().filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         /* Group list view setup */
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.listGroups(user.getGroups()));
@@ -75,6 +67,8 @@ public class ChooseGroup extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                EditText pollName = (EditText) findViewById(R.id.searchGroup);
+                Controller.setpName( pollName.getText().toString());
                 String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
                 Intent intent = new Intent (ChooseGroup.this, ChooseCategory.class);
                 user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
@@ -86,10 +80,30 @@ public class ChooseGroup extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              Intent myIntent = new Intent(this, AddGroup.class);
-//              this.startActivity(myIntent);
+                //EditText gname = (EditText) findViewById(R.id.editgn);
+                String groupName = search.getText().toString();
+//                if (!groupName.equals("")) {
+//                    TextView tv = (TextView) findViewById(R.id.newgroup);
+//                    Group newg = new Group(groupName);
+//                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
+//                    arrayAdapter.add(newg.getName());
+//                    ListView list = findViewById(R.id.groupList);
+//                    list.setAdapter(arrayAdapter);
+//                    user.addGroup(newg);
+//                    List<Group> ng = user.getGroups();
+//                    newg.setGroupID(gId);
+//                    FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
+////              Intent myIntent = new Intent(this, CreateGroup.class);
+////              this.startActivity(myIntent);
+//                }
             }
         });
+    }
+
+    // Back functionality
+    @Override public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 

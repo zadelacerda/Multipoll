@@ -9,10 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ public class ChooseCategory  extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+
     private List<String> categoryList;
 
     @Override
@@ -49,7 +55,11 @@ public class ChooseCategory  extends AppCompatActivity {
         controller = MainActivity.getController();
         user = controller.getUser();
 
+        /* Real Database */
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
 
+        /* Toolbar setup */
         getSupportActionBar().setTitle("Choose Category " + "(" + user.getCurrentGroup().getName() + ")");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -76,29 +86,42 @@ public class ChooseCategory  extends AppCompatActivity {
         categoryList = user.listCategories(user.getUserCategories());
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
         list.setAdapter(arrayAdapter);
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//
-//                String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
-//
-//                Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
-//                user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
-//
-//                startActivity(intent);
-//            }
-//        });
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
 
-//        /* Floating Button */
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String newCategory = search.getText().toString();
-//                arrayAdapter.add(newCategory);
-//                user.addUserCategory(new Category(newCategory));
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//        });
+                Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
+                user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
+
+                startActivity(intent);
+            }
+        });
+
+        /* Floating Button */
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newString = search.getText().toString();
+                if (!newString.equals("")) {
+                    Category newCategory = new Category(newString);
+                    arrayAdapter.add(newString); // update GUI
+                    newCategory.setId(String.valueOf(user.getUserCategories().size()));
+                    user.addUserCategory(newCategory); // update "database"
+                    List<Category> newList = user.getUserCategories();
+                    databaseReference.child("users").child(user.getUserName()).child("userCategories").setValue(newList);
+                    arrayAdapter.notifyDataSetChanged(); // refresh GUI
+                    ListView list = findViewById(R.id.categoryList);
+                    list.setAdapter(arrayAdapter);
+                    Toast.makeText(ChooseCategory.this, "New Category Added", Toast.LENGTH_SHORT).show();
+//                    updateView();
+                } else {
+                    Toast.makeText(ChooseCategory.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
 
     // Back functionality
     @Override public boolean onSupportNavigateUp() {
