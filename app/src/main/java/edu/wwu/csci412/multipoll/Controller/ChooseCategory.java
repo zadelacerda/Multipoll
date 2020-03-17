@@ -76,28 +76,28 @@ public class ChooseCategory  extends AppCompatActivity {
         categoryList = user.listCategories(user.getUserCategories());
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
         list.setAdapter(arrayAdapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//
+//                String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
+//
+//                Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
+//                user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
+//
+//                startActivity(intent);
+//            }
+//        });
 
-                String TempListViewClickedValue = user.listCategories(user.getUserCategories()).get(position);
-
-                Intent intent = new Intent (ChooseCategory.this, ChooseElements.class);
-                user.setCurrentCategory(user.getCategory(TempListViewClickedValue));
-
-                startActivity(intent);
-            }
-        });
-
-        /* Floating Button */
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String newCategory = search.getText().toString();
-                arrayAdapter.add(newCategory);
-                user.addUserCategory(new Category(newCategory));
-                arrayAdapter.notifyDataSetChanged();
-            }
-        });
+//        /* Floating Button */
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String newCategory = search.getText().toString();
+//                arrayAdapter.add(newCategory);
+//                user.addUserCategory(new Category(newCategory));
+//                arrayAdapter.notifyDataSetChanged();
+//            }
+//        });
     }
 
     // Back functionality

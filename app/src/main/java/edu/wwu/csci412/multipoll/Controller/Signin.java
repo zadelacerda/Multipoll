@@ -44,6 +44,7 @@ public class Signin extends AppCompatActivity {
 //                                txt.setText(user.getDisplayName());
                                 Intent intent = new Intent(Signin.this, MainActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.anim_enter_main, R.anim.anim_exit_signin);
 //                            } else {
 //                                // If sign in fails, display a message to the user.
 //                                Log.w(TAG, "signInWithEmail:failure", task.getException());
