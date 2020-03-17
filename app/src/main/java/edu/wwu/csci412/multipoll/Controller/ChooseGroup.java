@@ -56,7 +56,7 @@ public class ChooseGroup extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search bar setup */
-        search.setHint("Search Groups");
+        search.setHint("Name Poll");
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,9 +91,10 @@ public class ChooseGroup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //EditText gname = (EditText) findViewById(R.id.editgn);
-                String groupName = search.getText().toString();
-                if (!groupName.equals("")) {
-//                    TextView tv = (TextView) findViewById(R.id.newgroup);
+                String pollName = search.getText().toString();
+                if (!pollName.equals("")) {
+                    //set pollName to new Poll object
+                    // TextView tv = (TextView) findViewById(R.id.newgroup);
 //                    Group newg = new Group(groupName);
 //                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
 //                    arrayAdapter.add(newg.getName());
