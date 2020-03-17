@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -33,8 +35,10 @@
         <activity android:name=".Controller.ChooseCategory" />
         <activity android:name=".Controller.ChooseElements" />
         <activity android:name=".Controller.Groups" />
-        <activity android:name=".Controller.GroupSelected" />
-        <activity android:name=".Controller.CreateGroup" />
+
+<!--        <activity android:name=".Controller.GroupSelected" />-->
+        <activity android:name=".Controller.NewGroup" />
+
         <activity android:name=".Controller.NewFriend" />
         <activity android:name=".Controller.PollResults"/>
         <activity android:name=".Controller.Signin">
@@ -46,7 +50,9 @@
         </activity>
         <activity android:name=".Controller.Signup" />
         <activity android:name=".Controller.Friends" />
-        <activity android:name=".Controller.FriendSelected" />
+
+<!--        <activity android:name=".Controller.FriendSelected" />-->
+<!--        <activity android:name=".Controller.PollResults" />-->
 
     </application>
 
