@@ -20,6 +20,7 @@ public class User {
     private static Poll currentPoll;
     private static Category currentCategory;
     private static String currentElement;
+    private static String currentFriend;
 
     public User(){
 
@@ -137,6 +138,11 @@ public class User {
     public Category getCurrentCategory() {
         return currentCategory;
     }
+
+    public static String getCurrentFriend() {
+        return currentFriend;
+    }
+
     public Category getCategory(String c) {
         boolean found = false;
         int i = -1;
@@ -161,6 +167,11 @@ public class User {
     public void setCurrentPoll(Poll p) {
         currentPoll = p;
     }
+
+    public static void setCurrentFriend(String currentFriend) {
+        User.currentFriend = currentFriend;
+    }
+
     public void addUserCategory(Category cat) {
         userCategories.add(cat);
     }

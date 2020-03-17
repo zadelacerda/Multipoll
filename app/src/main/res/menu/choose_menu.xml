@@ -7,5 +7,10 @@
         android:title="Groups"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/create"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Create"
+        app:showAsAction="ifRoom"/>
+
 
 </menu>

@@ -7,5 +7,10 @@
         android:title="Logout"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/Voice"
+        android:icon="@android:drawable/ic_btn_speak_now"
+        android:title="Voice"
+        app:showAsAction="ifRoom"/>
+
 
 </menu>

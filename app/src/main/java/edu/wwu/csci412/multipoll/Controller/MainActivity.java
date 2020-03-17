@@ -8,9 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.speech.RecognizerIntent;
+
+import java.util.List;
 
 import edu.wwu.csci412.multipoll.Model.Controller;
+import edu.wwu.csci412.multipoll.Model.Poll;
 import edu.wwu.csci412.multipoll.Model.User;
+import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         createPoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (MainActivity.this, ChooseGroup.class);
+                Intent intent = new Intent(MainActivity.this, ChooseGroup.class);
                 startActivity(intent);
             }
         });
@@ -55,14 +60,42 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 1:
-                        intent = new Intent(MainActivity.this, NewGroup.class);
+                        intent = new Intent(MainActivity.this, Groups.class);
                         startActivity(intent);
                         break;
                 }
             }
         });
-    }
+        if (user.getGroups().size() != 0) {
+            final Group newGroup = user.getGroups().get(user.getGroups().size() - 1);
 
+            final Button recentGroup = this.findViewById(R.id.recentGroup);
+            recentGroup.setText(newGroup.getName());
+            recentGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user.setCurrentGroup(newGroup);
+                    Intent intent = new Intent(MainActivity.this, GroupSelected.class);
+                    startActivity(intent);
+                }
+            });
+
+            if(newGroup.getPolls().size() != 0) {
+                final Poll newPoll = newGroup.getPolls().get(newGroup.getPolls().size() - 1);
+                Button recentPoll = this.findViewById(R.id.recentPoll);
+                recentPoll.setText(newPoll.getName());
+                recentPoll.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        user.setCurrentPoll(newPoll);
+                        Intent intent = new Intent(MainActivity.this, PollResults.class);
+                        startActivity(intent);
+
+                    }
+                });
+            }
+        }
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
@@ -74,10 +107,79 @@ public class MainActivity extends AppCompatActivity {
             case R.id.logout:
                 intent = new Intent (MainActivity.this, Signin.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter_signin, R.anim.anim_exit_main);
                 return true;
+
+            case R.id.Voice:
+                displaySpeechRecognizer();
+
+
+
             default:
                 return super.onOptionsItemSelected( item );
         }
+    }
+
+    private static final int SPEECH_REQUEST_CODE = 0;
+
+    // Create an intent that can start the Speech Recognizer activity
+    private void displaySpeechRecognizer() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+// Start the activity, the intent will be populated with the speech text
+        startActivityForResult(intent, SPEECH_REQUEST_CODE);
+    }
+
+    // This callback is invoked when the Speech Recognizer returns.
+// This is where you process the intent and extract the speech text from the intent.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        Intent newv;
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
+            List<String> results = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);
+            String spokenText = results.get(0);
+            List<Group> groups = user.getGroups();
+
+            for (int i = 0; i < groups.size(); i++){
+                if(spokenText.equals(groups.get(i).getName().toLowerCase())){
+                    String TempListViewClickedValue = user.listGroups(user.getGroups()).get(i);
+                    Intent intent = new Intent (MainActivity.this, GroupSelected.class);
+                    user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
+                    startActivity(intent);
+                }
+            }
+
+            if(spokenText.equals("groups")){
+                newv = new Intent (MainActivity.this, Groups.class);
+                startActivity(newv);
+            }
+            else if(spokenText.equals("friends")){
+                newv = new Intent (MainActivity.this, Friends.class);
+                startActivity(newv);
+            }
+            else if(spokenText.equals("new poll")){
+                newv = new Intent (MainActivity.this, ChooseGroup.class);
+                startActivity(newv);
+            }
+            else if(spokenText.equals("add group")){
+                newv = new Intent (MainActivity.this, CreateGroup.class);
+                startActivity(newv);
+            }
+            else if(spokenText.equals("add friend")){
+                newv = new Intent (MainActivity.this, NewFriend.class);
+                startActivity(newv);
+            }
+            else if(spokenText.equals("close app")){
+                MainActivity.this.finish();
+                finishAffinity();
+                System.exit(0);
+            }
+            // Do something with spokenText
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public static Controller getController() {

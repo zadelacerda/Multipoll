@@ -36,6 +36,8 @@ public class ChooseGroup extends AppCompatActivity {
     public static Controller controller;
     public static User user;
 
+    String pName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,22 +58,8 @@ public class ChooseGroup extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search bar setup */
-        search.setHint("Search Groups");
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+        search.setHint("Enter New Poll Name");
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (ChooseGroup.this).arrayAdapter.getFilter().filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         /* Group list view setup */
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.listGroups(user.getGroups()));
@@ -79,6 +67,8 @@ public class ChooseGroup extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                EditText pollName = (EditText) findViewById(R.id.searchGroup);
+                Controller.setpName( pollName.getText().toString());
                 String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
                 Intent intent = new Intent (ChooseGroup.this, ChooseCategory.class);
                 user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
@@ -92,20 +82,20 @@ public class ChooseGroup extends AppCompatActivity {
             public void onClick(View view) {
                 //EditText gname = (EditText) findViewById(R.id.editgn);
                 String groupName = search.getText().toString();
-                if (!groupName.equals("")) {
-                    TextView tv = (TextView) findViewById(R.id.newgroup);
-                    Group newg = new Group(groupName);
-                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
-                    arrayAdapter.add(newg.getName());
-                    ListView list = findViewById(R.id.groupList);
-                    list.setAdapter(arrayAdapter);
-                    user.addGroup(newg);
-                    List<Group> ng = user.getGroups();
-                    newg.setGroupID(gId);
-                    FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
-//              Intent myIntent = new Intent(this, NewGroup.class);
-//              this.startActivity(myIntent);
-                }
+//                if (!groupName.equals("")) {
+//                    TextView tv = (TextView) findViewById(R.id.newgroup);
+//                    Group newg = new Group(groupName);
+//                    String gId = FirebaseDatabase.getInstance().getReference().push().getKey();
+//                    arrayAdapter.add(newg.getName());
+//                    ListView list = findViewById(R.id.groupList);
+//                    list.setAdapter(arrayAdapter);
+//                    user.addGroup(newg);
+//                    List<Group> ng = user.getGroups();
+//                    newg.setGroupID(gId);
+//                    FirebaseDatabase.getInstance().getReference().child("users").child(user.getUserName()).child("userGroups").setValue(ng);
+////              Intent myIntent = new Intent(this, CreateGroup.class);
+////              this.startActivity(myIntent);
+//                }
             }
         });
     }

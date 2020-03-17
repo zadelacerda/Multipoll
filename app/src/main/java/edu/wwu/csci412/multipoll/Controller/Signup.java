@@ -53,14 +53,18 @@ public class Signup extends AppCompatActivity {
     /*Onclick method to create a new authentication account and add profile to database*/
     public void createAccount( View v) {
 
-        EditText texte = (EditText) findViewById(R.id.editemail);
+        //EditText texte = (EditText) findViewById(R.id.editemail);
+        EditText first = (EditText) findViewById(R.id.editfirst);
+        EditText last = (EditText) findViewById(R.id.editlast);
         EditText textp = (EditText) findViewById(R.id.editpass);
         EditText textu = (EditText) findViewById(R.id.edituser);
-        final String email = (String) texte.getText().toString();
+        //final String email = (String) texte.getText().toString();
         final String username = (String) textu.getText().toString();
         final String pass = (String) textp.getText().toString();
+        final String fst = (String) first.getText().toString();
+        final String lst = (String) last.getText().toString();
 
-        if (!username.equals("") && !pass.equals("")){
+        if (!username.equals("") && !pass.equals("") && !fst.equals("") && !lst.equals("")){
 
             FirebaseDatabase.getInstance().getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -82,9 +86,13 @@ public class Signup extends AppCompatActivity {
                         newuser.setPassword(pass);
                         newuser.setUserID(uId);
                         newuser.setUserName(username);
+                        newuser.setFirstName(fst);
+                        newuser.setLastName(lst);
                         cont.setPassword(pass);
                         cont.setUserID(uId);
                         cont.setUserName(username);
+                        cont.setFirstName(fst);
+                        cont.setLastName(lst);
                         /*Add new user to database*/
                         mFirebaseRef.child(username).setValue(newuser);
                         Intent intent = new Intent(Signup.this, MainActivity.class);

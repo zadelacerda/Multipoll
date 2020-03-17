@@ -59,7 +59,7 @@ public class PollDisplay extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String TempListViewClickedValue = currentGroup.listPolls().get(position);
+                String TempListViewClickedValue = currentGroup.getPolls().get(position).getPollID();
                 user.setCurrentPoll(currentGroup.getPoll(TempListViewClickedValue));
 
                 Intent intent = new Intent(getActivity(), PollResults.class);

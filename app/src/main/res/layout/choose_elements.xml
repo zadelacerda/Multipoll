@@ -12,6 +12,9 @@
     <EditText
         android:id="@+id/searchElement"
         android:layout_width="match_parent"
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:layout_height="75dp"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="10dp" />

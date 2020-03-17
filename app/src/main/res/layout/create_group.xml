@@ -1,74 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
-    tools:context=".Controller.NewGroup">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:orientation="vertical"
+    android:background="@drawable/gradient">
 
-
-    <TextView
-        android:id="@+id/entergn"
-        android:layout_width="193dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:text="Enter Group Name"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editgn"
-        android:layout_width="297dp"
-        android:layout_height="57dp"
-        android:lines="1"
-        android:maxLength="20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entergn" />
-
-    <TextView
+        android:id="@+id/searchFriend"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="14dp"
-        android:background="#006400"
-        app:layout_constraintBottom_toTopOf="@+id/yourFriends"
-        app:layout_constraintTop_toBottomOf="@+id/editgn"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="75dp"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="10dp" />
 
-    <TextView
-        android:id="@+id/yourFriends"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Your Friends"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="138dp" />
 
     <LinearLayout
-        android:id="@+id/friendsList"
+        android:orientation="vertical"
+        android:id="@+id/friendContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchFriend">
     </LinearLayout>
-    <Button
-        android:id="@+id/button"
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
-        android:onClick="createGroup"
-        android:text="Create"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:elevation="8dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

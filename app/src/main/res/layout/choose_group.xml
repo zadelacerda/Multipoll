@@ -11,6 +11,7 @@
     <EditText
         android:id="@+id/searchGroup"
         android:layout_width="match_parent"
+        android:hint="Enter New Poll Name"
         android:layout_height="75dp"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="10dp"/>

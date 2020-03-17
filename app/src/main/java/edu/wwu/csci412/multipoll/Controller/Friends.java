@@ -65,6 +65,7 @@ public class Friends extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //String TempListViewClickedValue = user.listGroups(user.getGroups()).get(position);
+                user.setCurrentFriend(user.getFriends().get(position));
                 Intent intent = new Intent (Friends.this, FriendSelected.class);
                 //user.setCurrentGroup(user.getGroup(TempListViewClickedValue));
                 startActivity(intent);
