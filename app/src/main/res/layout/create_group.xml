@@ -20,6 +20,7 @@
         android:inputType="text"/>
 
 
+
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/friendContainer"
@@ -39,5 +40,5 @@
         app:srcCompat="@android:drawable/ic_input_add"
         app:elevation="8dp"/>
 
-
 </RelativeLayout>
+

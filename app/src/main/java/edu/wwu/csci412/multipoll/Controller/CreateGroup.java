@@ -11,16 +11,20 @@ import android.view.View;
 import android.widget.*;
 
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,7 @@ import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.Element;
 import edu.wwu.csci412.multipoll.Model.Group;
 import edu.wwu.csci412.multipoll.Model.Poll;
+
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
@@ -42,8 +47,6 @@ public class CreateGroup extends AppCompatActivity {
     List<CheckBox> checks = new ArrayList<>();
     public static Controller controller;
     public static User user;
-
-
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
 
@@ -52,7 +55,7 @@ public class CreateGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_group);
 
-        /* Toolbar setup */
+       /* Toolbar setup */
         getSupportActionBar().setTitle("Create Group");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -71,18 +74,21 @@ public class CreateGroup extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
         // Toolbar setup
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search view setup */
         search.setHint("Enter Group Name");
         //Create checkboxes for Friends list
+
         for (int i = 0; i < user.getFriends().size(); i++) {
             String friend = user.getFriends().get(i);
             CheckBox checkBox = new CheckBox(this);
             checkBox.setId(i);
             checkBox.setText(friend);
             checks.add(checkBox);
+
             checkBox.setWidth(linearLayout.getWidth());
             linearLayout.addView(checkBox);
         }
@@ -91,7 +97,6 @@ public class CreateGroup extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 EditText e = (EditText) findViewById(R.id.searchFriend);
                 String name = e.getText().toString();
                 //If the bar isn't blank, create new group with selected members
@@ -178,6 +183,7 @@ public class CreateGroup extends AppCompatActivity {
                     }
                 }
 
+
             }
         });
     }
@@ -188,3 +194,4 @@ public class CreateGroup extends AppCompatActivity {
         return true;
     }
 }
+

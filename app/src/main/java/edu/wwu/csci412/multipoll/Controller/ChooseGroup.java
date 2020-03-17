@@ -83,6 +83,7 @@ public class ChooseGroup extends AppCompatActivity {
                     Toast.makeText(ChooseGroup.this, "New Poll Created", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ChooseGroup.this, "Name Is Empty", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
