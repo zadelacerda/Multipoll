@@ -23,15 +23,17 @@
         android:id="@+id/editpass"
         android:layout_width="297dp"
         android:layout_height="57dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="76dp"
-        android:inputType="textPassword"
         android:hint="Enter Password"
+        android:inputType="textPassword"
         android:lines="1"
         android:maxLength="20"
         android:maxLines="1"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edituser" />
 
     <EditText
         android:id="@+id/editfirst"
@@ -94,6 +96,7 @@
         android:layout_marginBottom="68dp"
         android:text="Create Account"
         android:onClick="createAccount"
+        android:background="@color/startGreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

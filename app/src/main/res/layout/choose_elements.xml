@@ -36,8 +36,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_gravity="bottom|end"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        app:backgroundTint="#00574B"
         app:srcCompat="@android:drawable/ic_input_add"
         app:elevation="8dp"/>
+
 
 
 </RelativeLayout>

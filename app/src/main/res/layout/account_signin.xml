@@ -76,7 +76,7 @@
         android:layout_marginBottom="40dp"
         android:onClick="Login"
 
-        android:background="@color/DarkCyan"
+        android:background="@color/startGreen"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/newUser"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
         android:layout_marginBottom="32dp"
         android:onClick="newUser"
         android:text="New User"
-        android:background="@color/DarkCyan"
+        android:background="@color/startGreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
