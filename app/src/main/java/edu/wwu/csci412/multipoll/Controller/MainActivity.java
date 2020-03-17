@@ -15,7 +15,7 @@ import edu.wwu.csci412.multipoll.Model.Controller;
 import edu.wwu.csci412.multipoll.Model.User;
 import edu.wwu.csci412.multipoll.R;
 
-import static edu.wwu.csci412.multipoll.Controller.MapsActivity.mMap;
+//import static edu.wwu.csci412.multipoll.Controller.MapsActivity.mMap;
 
 public class MainActivity extends AppCompatActivity {
     public static Controller controller;
@@ -29,17 +29,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            if (mMap != null) {
-                mMap.setMyLocationEnabled(true);
-                mLocationPermissionGranted = true;
-            }
-        } else {
-            // Permission to access the location is missing. Show rationale and request permission
-            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-        }
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            if (mMap != null) {
+//                mMap.setMyLocationEnabled(true);
+//                mLocationPermissionGranted = true;
+//            }
+//        } else {
+//            // Permission to access the location is missing. Show rationale and request permission
+//            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
+//                    Manifest.permission.ACCESS_FINE_LOCATION, true);
+//        }
 
         controller = new Controller();
         dbcontroller = new DatabaseController();
