@@ -43,6 +43,7 @@
             android:layout_marginEnd="54dp"
             android:layout_marginRight="54dp"
             android:layout_marginBottom="101dp"
+            android:background="@color/startGreen"
             android:text="Create"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Groups"
@@ -59,6 +60,8 @@
             android:layout_marginEnd="77dp"
             android:layout_marginRight="77dp"
             android:layout_marginBottom="86dp"
+            android:background="@color/startGreen"
+
             android:text="Groups"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +86,7 @@
         <Button
             android:id="@+id/recentGroup"
             android:layout_width="match_parent"
-            android:background="@color/DarkCyan"
+            android:background="@color/endGreen"
             android:layout_height="wrap_content" />
         <!--        </View>-->
 
@@ -98,7 +101,7 @@
         <Button
             android:id="@+id/recentPoll"
             android:layout_width="match_parent"
-            android:background="@color/DarkCyan"
+            android:background="@color/endGreen"
             android:layout_height="wrap_content" />
 
 
