@@ -92,6 +92,10 @@ public class Friends extends AppCompatActivity {
                                 userFound = 1;
                                 if(!currentUser.getFriends().contains(usern)) {
                                     currentUser.addFriend(usern);
+                                    Toast.makeText(Friends.this, "New Friend Added", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Friends.this, "Invalid Username", Toast.LENGTH_SHORT).show();
+
                                 }
 
                             }
