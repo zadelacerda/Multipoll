@@ -101,8 +101,6 @@ public class CreateGroup extends AppCompatActivity {
                 String name = e.getText().toString();
                 //If the bar isn't blank, create new group with selected members
                 if(!search.getText().toString().equals("")) {
-
-
                     int ind = 0;
                     final Group newGroup = new Group(search.getText().toString());
                     newGroup.addMember(user.getUserName());
@@ -153,20 +151,20 @@ public class CreateGroup extends AppCompatActivity {
 
                                     }
                                     //Add all the members
-                                    for( DataSnapshot mems : snap.child("members").getChildren()){
+                                    for (DataSnapshot mems : snap.child("members").getChildren()) {
                                         gr.addMember(mems.getValue(String.class));
 
                                     }
 
                                     gList.add(gr);
                                     //Add to model if the member is the current user
-                                    if(un.equals(user.getUserName())){
+                                    if (un.equals(user.getUserName())) {
                                         user.addGroup(gr);
                                     }
                                 }
                                 gList.add(newGroup);
                                 //Add to members database user
-                                if(un.equals(user.getUserName())){
+                                if (un.equals(user.getUserName())) {
 
                                     user.setUserGroups(gList);
                                     databaseReference.child("users").child(user.getUserName()).child("userGroups").setValue(gList);
@@ -181,7 +179,13 @@ public class CreateGroup extends AppCompatActivity {
                         });
 
                     }
-                }
+                Intent intent = new Intent(CreateGroup.this, Groups.class);
+                startActivity(intent);
+                Toast.makeText(CreateGroup.this, "New Group Created", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(CreateGroup.this, "Group Name Is Empty", Toast.LENGTH_SHORT).show();
+
+            }
 
 
             }

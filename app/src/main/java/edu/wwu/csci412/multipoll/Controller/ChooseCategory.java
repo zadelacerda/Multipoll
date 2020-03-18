@@ -65,7 +65,7 @@ public class ChooseCategory  extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search bar setup */
-        search.setHint("Search Categories");
+        search.setHint("Search/Add Categories");
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

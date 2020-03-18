@@ -91,7 +91,7 @@ public class ChooseElements extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /* Search view setup */
-        search.setHint("Search Elements");
+        search.setHint("Search/Add Element");
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

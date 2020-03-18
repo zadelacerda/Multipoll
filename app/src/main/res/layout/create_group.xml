@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        app:backgroundTint="#00574B"
         android:layout_gravity="bottom|end"
         app:srcCompat="@android:drawable/ic_input_add"
         app:elevation="8dp"/>
